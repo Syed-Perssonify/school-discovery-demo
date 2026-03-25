@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 export default function Founder() {
   return (
     <section id="founder" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 bg-white">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <motion.h2
           variants={fadeUp}
           initial="hidden"
