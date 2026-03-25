@@ -46,14 +46,9 @@ export default function Process() {
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
                   className="w-full flex items-center justify-between gap-4 text-left"
                 >
-                  <div>
-                    <h2 className="text-sm sm:text-base font-bold text-[#0D0D0D]">
-                      {step.title}
-                    </h2>
-                    <p className="text-xs text-muted-foreground mt-0.5">
-                      Step {step.number}
-                    </p>
-                  </div>
+                  <h2 className="text-sm sm:text-base font-bold text-[#0D0D0D]">
+                    {step.title}
+                  </h2>
                   <span className="text-[#C0170F] text-xl font-bold shrink-0">
                     {openIndex === index ? "−" : "+"}
                   </span>
