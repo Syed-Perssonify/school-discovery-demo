@@ -65,7 +65,7 @@ export default function Cornerstones() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
-            className="order-1 md:order-2 bg-[#E84E48] rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-8 md:gap-10"
+            className="order-1 md:order-2 bg-[#C0170F] rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-8 md:gap-10"
           >
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
               {cornerstonesContent.heading}
