@@ -1,0 +1,90 @@
+"use client";
+
+import { processContent } from "@/app/data/content";
+import {
+  fadeInLeft,
+  fadeInRight,
+  staggerContainer,
+  viewportOnce,
+} from "@/lib/motion";
+import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
+
+export default function Process() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  return (
+    <section id="process" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 bg-white">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+
+          {/* Left — red card */}
+          <motion.div
+            variants={fadeInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="bg-[#C0170F] rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-8 md:gap-10"
+          >
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+              {processContent.heading}
+            </h3>
+            <a
+              href="#contact"
+              className="inline-block bg-white text-[#C0170F] text-sm font-bold px-6 py-3 rounded-lg w-fit hover:bg-red-50 transition-colors"
+            >
+              Book a Discovery Visit
+            </a>
+          </motion.div>
+
+          {/* Right — Accordion */}
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="flex flex-col divide-y divide-border"
+          >
+            {processContent.steps.map((step, index) => (
+              <motion.div key={step.number} variants={fadeInRight} className="py-4 sm:py-5">
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="w-full flex items-center justify-between gap-4 text-left"
+                >
+                  <div>
+                    <h2 className="text-sm sm:text-base font-bold text-[#0D0D0D]">
+                      {step.title}
+                    </h2>
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      Step {step.number}
+                    </p>
+                  </div>
+                  <span className="text-[#C0170F] text-xl font-bold shrink-0">
+                    {openIndex === index ? "−" : "+"}
+                  </span>
+                </button>
+                <AnimatePresence initial={false}>
+                  {openIndex === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <p className="pt-3 sm:pt-4 text-sm text-muted-foreground leading-relaxed">
+                        {step.description}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </motion.div>
+
+        </div>
+      </div>
+    </section>
+  );
+}

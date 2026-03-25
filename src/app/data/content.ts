@@ -1,17 +1,29 @@
-export const heroContent = {
-    eyebrow: "Evidence-Based School Improvement",
+export const navContent = {
+    logo: "School Discovery",
+    links: [
+      { label: "About", href: "#about" },
+      { label: "Our Process", href: "#process" },
+      { label: "Cornerstones", href: "#cornerstones" },
+      { label: "Founder", href: "#founder" },
+    ],
+    cta: "Book a Discovery Visit",
+  };
+  
+  export const heroContent = {
     heading: "Transforming schools through evidence-based insights",
     subheading:
       "School Discovery – Education & Technology Solutions partners with schools to understand current systems, identify strengths, and co-create a clear roadmap for better learner outcomes and a stronger school experience.",
     primaryCta: "Book a Discovery Visit",
-    secondaryCta: "Learn More",
   };
   
   export const aboutContent = {
-    eyebrow: "Who We Are",
-    heading: "Helping schools see clearly and move forward",
+    heading: "School Discovery – About",
     description:
       "School Discovery – Education & Technology Solutions partners with schools to understand their current reality, identify systemic strengths, and design targeted pathways for improvement. Through a structured, evidence-based process, we help schools enhance learner outcomes and enrich the learning experience for students, teachers, parents, and leaders.",
+  };
+  
+  export const visionPurposeContent = {
+    heading: "Vision & Purpose",
     vision: {
       label: "Vision",
       text: "To enable every school to become a continuously improving learning community that nurtures high-quality teaching, meaningful learning, and a positive experience for all stakeholders.",
@@ -20,21 +32,26 @@ export const heroContent = {
       label: "Purpose",
       text: "School Discovery helps schools see where they stand today, clarify what is working well, and decide what needs to be strengthened or redesigned. The outcome is a clear, actionable roadmap for improvement that aligns with the school's context, values, and aspirations.",
     },
+  };
+  
+  export const objectiveApproachContent = {
+    heading: "Our Objective & Approach",
     objective: {
       label: "Objective",
       text: "To understand the systems, processes, and mechanisms currently in place within the school and build a clear, evidence-based picture of where the school stands today. This foundation enables collaborative, targeted improvement that supports better learner outcomes and a stronger learning experience for all stakeholders.",
     },
     approach: {
       label: "Approach",
-      text: "During the visit, we combine direct observation, stakeholder engagement, and evidence review to gain a holistic understanding of the school. After the visit, our team triangulates findings, applies professional judgement, and provides a current-status rating along with practical recommendations for the next phase of development.",
+      text: "During the visit, we combine direct observation, stakeholder engagement, and evidence review to gain a holistic understanding of the school. After the visit, our team at School Discovery – Education & Technology Solutions triangulates findings, applies professional judgement, and provides a current-status rating along with practical recommendations for the next phase of development.",
     },
   };
   
   export const cornerstonesContent = {
-    eyebrow: "Our Framework",
     heading: "Four Cornerstones of School Discovery",
     description:
-      "Our work is anchored in four interconnected themes that cover the school's core functioning.",
+      "Our work is anchored in four interconnected themes that cover the school's core functioning:",
+    closing:
+      "These four cornerstones guide our observations, interactions, and recommendations throughout the School Discovery process.",
     items: [
       {
         number: "01",
@@ -64,10 +81,7 @@ export const heroContent = {
   };
   
   export const processContent = {
-    eyebrow: "What to Expect",
-    heading: "What happens during the visit?",
-    description:
-      "A structured, non-intrusive process designed to understand your school as a whole — not evaluate individuals.",
+    heading: "What Happens During the Visit?",
     steps: [
       {
         number: "1",
@@ -96,37 +110,19 @@ export const heroContent = {
     ],
     guidingPrinciple: {
       label: "Our Guiding Principle",
-      text: "Across all aspects of the visit — classroom observations, learning walks, focus group interactions, and document review — our approach remains non-intrusive and system-focused. We seek to understand how the school operates as a whole, not to evaluate individual performance, so that the school can build on its strengths with confidence and clarity.",
-      highlights: ["non-intrusive", "system-focused"],
+      text: "Across all aspects of the visit—classroom observations, learning walks, focus group interactions, and document review—our approach remains non\u2011intrusive and system\u2011focused. At School Discovery – Education & Technology Solutions, we seek to understand how the school operates as a whole, not to evaluate individual performance, so that the school can build on its strengths with confidence and clarity.",
     },
   };
   
   export const founderContent = {
-    eyebrow: "The Founder",
+    heading: "About the Founder",
     name: "Mr. Subramanyam Kantheti",
     title: "Founder, School Discovery – Education & Technology Solutions",
     bio: [
       "With over two decades of experience in the Indian K–12 education sector, Mr. Subramanyam Kantheti has served in leadership roles across school management, curriculum implementation, and education technology. He has functioned as CEO, CXO, and strategic advisor, working with CBSE, Cambridge, and international-board schools, as well as technology-driven education providers.",
       "Through School Discovery, he brings together his deep understanding of school operations, academic leadership, and technology integration to help schools reflect on their current reality and design sustainable strategies for improvement. His focus is on building systems that support better learning outcomes, effective teaching practices, and a positive experience for all stakeholders.",
     ],
-    tags: [
-      "CBSE Schools",
-      "Cambridge",
-      "International Boards",
-      "Ed-Tech",
-      "Curriculum Leadership",
-      "School Management",
-    ],
-    photo: "/images/founder/subramanyam-kantheti.jpg", // placeholder until photo is provided
-  };
-  
-  export const ctaContent = {
-    eyebrow: "Get Started",
-    heading: "Ready to discover your school's full potential?",
-    description:
-      "Schedule a Discovery Visit and receive a clear, evidence-based roadmap for improvement tailored to your school's context and aspirations.",
-    primaryCta: "Book a Discovery Visit",
-    secondaryCta: "Contact Us",
+    photo: "/images/founder/subramanyam-kantheti.jpg",
   };
   
   export const footerContent = {
@@ -140,15 +136,4 @@ export const heroContent = {
       { label: "Founder", href: "#founder" },
       { label: "Contact", href: "#contact" },
     ],
-  };
-  
-  export const navContent = {
-    logo: "School Discovery",
-    links: [
-      { label: "About", href: "#about" },
-      { label: "Our Process", href: "#process" },
-      { label: "Cornerstones", href: "#cornerstones" },
-      { label: "Founder", href: "#founder" },
-    ],
-    cta: "Book a Discovery Visit",
   };
