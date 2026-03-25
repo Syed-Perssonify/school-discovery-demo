@@ -18,13 +18,13 @@ export default function Cornerstones() {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
 
-          {/* Left — Accordion */}
+          {/* Left — Accordion (shows second on mobile, first on desktop) */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
-            className="flex flex-col divide-y divide-border"
+            className="order-2 md:order-1 flex flex-col divide-y divide-border"
           >
             {cornerstonesContent.items.map((item, index) => (
               <motion.div key={item.number} variants={fadeInLeft} className="py-4 sm:py-5">
@@ -59,13 +59,13 @@ export default function Cornerstones() {
             ))}
           </motion.div>
 
-          {/* Right — red card */}
+          {/* Right — red card (shows first on mobile, second on desktop) */}
           <motion.div
             variants={fadeInRight}
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
-            className="bg-[#C0170F] rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-8 md:gap-10"
+            className="order-1 md:order-2 bg-[#C0170F] rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-8 md:gap-10"
           >
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
               {cornerstonesContent.heading}
