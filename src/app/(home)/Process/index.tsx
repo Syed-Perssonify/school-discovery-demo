@@ -29,12 +29,6 @@ export default function Process() {
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
               {processContent.heading}
             </h3>
-            <a
-              href="#contact"
-              className="inline-block bg-white text-[#C0170F] text-sm font-bold px-6 py-3 rounded-lg w-fit hover:bg-red-50 transition-colors"
-            >
-              Book a Discovery Visit
-            </a>
           </motion.div>
 
           {/* Right — Accordion */}

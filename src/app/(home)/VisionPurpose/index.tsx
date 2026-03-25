@@ -1,30 +1,8 @@
 "use client";
 
-import {
-  objectiveApproachContent,
-  visionPurposeContent,
-} from "@/app/data/content";
+import { visionPurposeContent } from "@/app/data/content";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { motion } from "motion/react";
-
-const cards = [
-  {
-    label: visionPurposeContent.vision.label,
-    text: visionPurposeContent.vision.text,
-  },
-  {
-    label: visionPurposeContent.purpose.label,
-    text: visionPurposeContent.purpose.text,
-  },
-  {
-    label: objectiveApproachContent.objective.label,
-    text: objectiveApproachContent.objective.text,
-  },
-  {
-    label: objectiveApproachContent.approach.label,
-    text: objectiveApproachContent.approach.text,
-  },
-];
 
 export default function VisionPurpose() {
   return (
@@ -42,12 +20,10 @@ export default function VisionPurpose() {
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0D0D0D] tracking-tight leading-tight">
               {visionPurposeContent.heading}
-              <span className="block mt-1 text-[#C0170F]">&</span>
-              {objectiveApproachContent.heading}
             </h2>
           </motion.div>
 
-          {/* Right -- scrollable cards */}
+          {/* Right -- cards */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -55,20 +31,29 @@ export default function VisionPurpose() {
             viewport={viewportOnce}
             className="flex flex-col gap-5 sm:gap-6"
           >
-            {cards.map((card) => (
-              <motion.div
-                key={card.label}
-                variants={fadeUp}
-                className="border border-border rounded-xl p-5 sm:p-6 md:p-8 bg-[#fafafa] hover:shadow-md transition-shadow"
-              >
-                <h3 className="text-sm sm:text-base font-bold text-[#C0170F] uppercase tracking-widest mb-3">
-                  {card.label}
-                </h3>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  {card.text}
-                </p>
-              </motion.div>
-            ))}
+            <motion.div
+              variants={fadeUp}
+              className="border border-border rounded-xl p-5 sm:p-6 md:p-8 bg-[#fafafa] hover:shadow-md transition-shadow"
+            >
+              <h3 className="text-sm sm:text-base font-bold text-[#C0170F] uppercase tracking-widest mb-3">
+                {visionPurposeContent.vision.label}
+              </h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                {visionPurposeContent.vision.text}
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp}
+              className="border border-border rounded-xl p-5 sm:p-6 md:p-8 bg-[#fafafa] hover:shadow-md transition-shadow"
+            >
+              <h3 className="text-sm sm:text-base font-bold text-[#C0170F] uppercase tracking-widest mb-3">
+                {visionPurposeContent.purpose.label}
+              </h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                {visionPurposeContent.purpose.text}
+              </p>
+            </motion.div>
           </motion.div>
 
         </div>

@@ -33,14 +33,9 @@ export default function Cornerstones() {
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
                   className="w-full flex items-center justify-between gap-4 text-left"
                 >
-                  <div>
-                    <h2 className="text-sm sm:text-base font-bold text-[#0D0D0D]">
-                      {item.title}
-                    </h2>
-                    <p className="text-xs text-muted-foreground mt-0.5">
-                      Cornerstone {item.number}
-                    </p>
-                  </div>
+                  <h2 className="text-sm sm:text-base font-bold text-[#0D0D0D]">
+                    {item.title}
+                  </h2>
                   <span className="text-[#C0170F] text-xl font-bold shrink-0">
                     {openIndex === index ? "−" : "+"}
                   </span>
@@ -81,12 +76,6 @@ export default function Cornerstones() {
             <p className="text-white/70 text-sm leading-relaxed">
               {cornerstonesContent.closing}
             </p>
-            <a
-              href="#contact"
-              className="inline-block bg-white text-[#C0170F] text-sm font-bold px-6 py-3 rounded-lg w-fit hover:bg-red-50 transition-colors"
-            >
-              Book a Discovery Visit
-            </a>
           </motion.div>
 
         </div>
