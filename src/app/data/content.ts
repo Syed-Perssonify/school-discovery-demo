@@ -49,7 +49,7 @@ export const navContent = {
   export const cornerstonesContent = {
     heading: "Four Cornerstones of School Discovery",
     description:
-      "Our work is anchored in four interconnected themes that cover the school's core functioning:",
+      "Our work is anchored in four interconnected themes\nthat cover the school's core functioning:",
     closing:
       "These four cornerstones guide our observations, interactions, and recommendations throughout the School Discovery process.",
     items: [

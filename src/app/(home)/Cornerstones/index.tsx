@@ -26,7 +26,7 @@ export default function Cornerstones() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0D0D0D] tracking-tight mb-3 sm:mb-4">
             {cornerstonesContent.heading}
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed whitespace-pre-line">
             {cornerstonesContent.description}
           </p>
         </motion.div>
