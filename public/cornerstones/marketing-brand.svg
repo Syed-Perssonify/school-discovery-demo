@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#FEF2F2"/>
+  <rect x="90" y="55" width="220" height="140" rx="12" fill="#C0170F" opacity="0.08" stroke="#C0170F" stroke-width="1.5" opacity="0.12"/>
+  <rect x="110" y="75" width="80" height="8" rx="4" fill="#C0170F" opacity="0.2"/>
+  <rect x="110" y="95" width="180" height="6" rx="3" fill="#C0170F" opacity="0.1"/>
+  <rect x="110" y="110" width="160" height="6" rx="3" fill="#C0170F" opacity="0.1"/>
+  <rect x="110" y="130" width="70" height="30" rx="6" fill="#C0170F" opacity="0.15"/>
+  <rect x="120" y="140" width="50" height="10" rx="3" fill="#C0170F" opacity="0.1"/>
+  <circle cx="140" cy="230" r="25" fill="#C0170F" opacity="0.1"/>
+  <circle cx="200" cy="230" r="25" fill="#C0170F" opacity="0.12"/>
+  <circle cx="260" cy="230" r="25" fill="#C0170F" opacity="0.1"/>
+  <path d="M132 230h16M140 222v16" stroke="#C0170F" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+  <path d="M194 230l4 4 8-8" stroke="#C0170F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
+  <circle cx="260" cy="230" r="8" stroke="#C0170F" stroke-width="1.5" fill="none" opacity="0.3"/>
+</svg>

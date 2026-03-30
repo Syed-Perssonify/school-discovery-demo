@@ -58,24 +58,28 @@ export const navContent = {
         title: "Academics",
         description:
           "We examine curriculum design, pedagogy, assessment, and learning outcomes to understand how teaching and learning are structured and experienced by students and teachers.",
+        image: "/cornerstones/academics.svg",
       },
       {
         number: "02",
         title: "Health, Safety & Child Protection",
         description:
           "We review systems and practices that ensure a safe, healthy, and supportive environment for every child, including physical safety, emotional wellbeing, and safeguarding protocols.",
+        image: "/cornerstones/health-safety.svg",
       },
       {
         number: "03",
         title: "Operations",
         description:
           "We analyse leadership structures, administrative processes, resource management, and day-to-day operations to identify efficiencies and areas for smoother functioning.",
+        image: "/cornerstones/operations.svg",
       },
       {
         number: "04",
         title: "Marketing & Brand",
         description:
           "We explore how the school presents itself to parents, the community, and the wider education ecosystem, including communication, perception, and alignment between brand promise and on-ground experience.",
+        image: "/cornerstones/marketing-brand.svg",
       },
     ],
   };

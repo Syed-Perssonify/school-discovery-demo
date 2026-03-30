@@ -1,41 +1,57 @@
 "use client";
 
 import { cornerstonesContent } from "@/app/data/content";
-import {
-  fadeInLeft,
-  fadeInRight,
-  staggerContainer,
-  viewportOnce,
-} from "@/lib/motion";
+import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Cornerstones() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
+  const activeItem = openIndex !== null ? cornerstonesContent.items[openIndex] : null;
+
   return (
     <section id="cornerstones" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 bg-[#fafafa]">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
 
-          {/* Left — Accordion (shows second on mobile, first on desktop) */}
+        {/* Centered heading + description */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="text-center max-w-2xl mx-auto mb-10 md:mb-14"
+        >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0D0D0D] tracking-tight mb-3 sm:mb-4">
+            {cornerstonesContent.heading}
+          </h2>
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+            {cornerstonesContent.description}
+          </p>
+        </motion.div>
+
+        {/* Two-column: accordion left, image right */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+
+          {/* Accordion */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
-            className="order-2 md:order-1 flex flex-col divide-y divide-border"
+            className="flex flex-col divide-y divide-border"
           >
             {cornerstonesContent.items.map((item, index) => (
-              <motion.div key={item.number} variants={fadeInLeft} className="py-4 sm:py-5">
+              <motion.div key={item.number} variants={fadeUp} className="py-4 sm:py-5">
                 <button
                   type="button"
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
                   className="w-full flex items-center justify-between gap-4 text-left"
                 >
-                  <h2 className="text-sm sm:text-base font-bold text-[#0D0D0D]">
+                  <h3 className="text-sm sm:text-base font-bold text-[#0D0D0D]">
                     {item.title}
-                  </h2>
+                  </h3>
                   <span className="text-[#C0170F] text-xl font-bold shrink-0">
                     {openIndex === index ? "−" : "+"}
                   </span>
@@ -59,26 +75,43 @@ export default function Cornerstones() {
             ))}
           </motion.div>
 
-          {/* Right — red card (shows first on mobile, second on desktop) */}
-          <motion.div
-            variants={fadeInRight}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            className="order-1 md:order-2 bg-[#C0170F] rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-8 md:gap-10"
-          >
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
-              {cornerstonesContent.heading}
-            </h3>
-            <p className="text-white/70 text-sm leading-relaxed">
-              {cornerstonesContent.description}
-            </p>
-            <p className="text-white/70 text-sm leading-relaxed">
-              {cornerstonesContent.closing}
-            </p>
-          </motion.div>
+          {/* Image that changes based on active accordion item */}
+          <div className="relative aspect-4/3 rounded-2xl overflow-hidden bg-white border border-border">
+            <AnimatePresence mode="wait">
+              {activeItem && (
+                <motion.div
+                  key={activeItem.number}
+                  initial={{ opacity: 0, scale: 0.97 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.97 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={activeItem.image}
+                    alt={activeItem.title}
+                    fill
+                    className="object-contain p-4 sm:p-6"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
 
         </div>
+
+        {/* Closing line */}
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="text-center text-sm sm:text-base text-muted-foreground leading-relaxed mt-10 md:mt-14 max-w-2xl mx-auto"
+        >
+          {cornerstonesContent.closing}
+        </motion.p>
+
       </div>
     </section>
   );
