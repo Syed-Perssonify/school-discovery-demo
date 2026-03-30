@@ -55,7 +55,7 @@ export default function Navbar() {
           aria-label={open ? "Close menu" : "Open menu"}
         >
           <motion.span
-            animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+            animate={open ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
             className="block w-6 h-0.5 bg-[#0D0D0D] origin-center"
           />
           <motion.span
@@ -63,7 +63,7 @@ export default function Navbar() {
             className="block w-6 h-0.5 bg-[#0D0D0D]"
           />
           <motion.span
-            animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+            animate={open ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
             className="block w-6 h-0.5 bg-[#0D0D0D] origin-center"
           />
         </button>
