@@ -9,13 +9,13 @@ export default function GuidingPrinciple() {
   return (
     <section id="guiding-principle" className="relative overflow-hidden">
       <Image
-        src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1600&q=80"
+        src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1600&q=80"
         alt=""
         fill
         className="object-cover"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-[#0D0D0D]/70" />
+      <div className="absolute inset-0 bg-[#0D0D0D]/80" />
 
       <motion.div
         variants={fadeUp}
