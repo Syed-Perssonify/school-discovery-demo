@@ -1,5 +1,6 @@
 "use client";
 
+import { useDiscoveryBooking } from "@/components/discovery-booking";
 import { navContent } from "@/app/data/content";
 import { fadeIn } from "@/lib/motion";
 import { AnimatePresence, motion } from "motion/react";
@@ -9,6 +10,7 @@ import { useState } from "react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { openBooking } = useDiscoveryBooking();
 
   return (
     <motion.nav
@@ -48,12 +50,13 @@ export default function Navbar() {
               </Link>
             ))}
           </div>
-          <Link
-            href="#contact"
+          <button
+            type="button"
+            onClick={openBooking}
             className="bg-[#C0170F] hover:bg-[#9B100A] text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-colors"
           >
             {navContent.cta}
-          </Link>
+          </button>
         </div>
 
         {/* Mobile hamburger */}
@@ -99,13 +102,16 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="bg-[#C0170F] hover:bg-[#9B100A] text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-colors text-center mt-2"
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  openBooking();
+                }}
+                className="bg-[#C0170F] hover:bg-[#9B100A] text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-colors text-center mt-2 w-full"
               >
                 {navContent.cta}
-              </Link>
+              </button>
             </div>
           </motion.div>
         )}

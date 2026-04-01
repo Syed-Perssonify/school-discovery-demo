@@ -12,6 +12,7 @@ import Footer from "./(home)/Footer";
 export default function Home() {
   return (
     <div>
+      <div id="contact" className="sr-only" />
       <Navbar />
       <Hero />
       <About />

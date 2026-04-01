@@ -1,11 +1,14 @@
 "use client";
 
+import { useDiscoveryBooking } from "@/components/discovery-booking";
 import { footerContent } from "@/app/data/content";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { motion } from "motion/react";
 import Link from "next/link";
 
 export default function Footer() {
+  const { openBooking } = useDiscoveryBooking();
+
   return (
     <footer className="bg-[#0D0D0D] text-white py-12 md:py-16 px-4 sm:px-6">
       <motion.div
@@ -29,15 +32,26 @@ export default function Footer() {
 
           {/* Links */}
           <motion.nav variants={fadeUp} className="flex flex-wrap gap-x-6 gap-y-2">
-            {footerContent.links.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-sm text-white/70 hover:text-[#C0170F] transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {footerContent.links.map((link) =>
+              link.href === "#contact" ? (
+                <button
+                  key={link.label}
+                  type="button"
+                  onClick={openBooking}
+                  className="text-sm text-white/70 hover:text-[#C0170F] transition-colors text-left"
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-sm text-white/70 hover:text-[#C0170F] transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ),
+            )}
           </motion.nav>
 
         </div>

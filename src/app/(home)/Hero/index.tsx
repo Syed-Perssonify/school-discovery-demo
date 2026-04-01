@@ -1,12 +1,13 @@
 "use client";
 
+import { useDiscoveryBooking } from "@/components/discovery-booking";
 import { heroContent } from "@/app/data/content";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { motion } from "motion/react";
 import Image from "next/image";
-import Link from "next/link";
-
 export default function Hero() {
+  const { openBooking } = useDiscoveryBooking();
+
   return (
     <section id="top" className="relative bg-[#0D0D0D] overflow-hidden">
       <Image
@@ -39,12 +40,13 @@ export default function Hero() {
               {heroContent.subheading}
             </motion.p>
             <motion.div variants={fadeUp}>
-              <Link
-                href="#contact"
+              <button
+                type="button"
+                onClick={openBooking}
                 className="inline-block bg-[#C0170F] hover:bg-[#9B100A] text-white text-sm sm:text-base font-semibold px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg transition-colors"
               >
                 {heroContent.primaryCta}
-              </Link>
+              </button>
             </motion.div>
           </div>
         </motion.div>
