@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "School Discovery – Education & Technology Solutions",
-  description: "School Discovery – Education & Technology Solutions partners with schools to understand current systems, identify strengths, and co-create a clear roadmap for better learner outcomes and a stronger school experience.",
+  title: "School Discovery",
+  description: "School Discovery partners with schools to understand current systems, identify strengths, and co-create a clear roadmap for better learner outcomes and a stronger school experience.",
   icons: {
     icon: "/logo.png",
   },

@@ -3,6 +3,7 @@
 import { navContent } from "@/app/data/content";
 import { fadeIn } from "@/lib/motion";
 import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -16,12 +17,20 @@ export default function Navbar() {
       animate="visible"
       className="sticky top-0 z-50 bg-white border-b border-border"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 min-h-20 sm:min-h-26 py-3 sm:py-4 flex items-center justify-between">
         <Link
           href="#top"
-          className="shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0170F] focus-visible:ring-offset-2 rounded-sm"
+          className="flex items-center gap-3 sm:gap-4 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0170F] focus-visible:ring-offset-2 rounded-sm"
         >
-          <span className="text-lg sm:text-xl font-extrabold text-[#0D0D0D] tracking-tight">
+          <Image
+            src="/logo.png"
+            alt=""
+            width={240}
+            height={66}
+            className="h-12 sm:h-14 md:h-16 w-auto rounded-4xl"
+            priority
+          />
+          <span className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#0D0D0D] tracking-tight">
             {navContent.logo}
           </span>
         </Link>

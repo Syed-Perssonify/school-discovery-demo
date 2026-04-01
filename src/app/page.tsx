@@ -17,8 +17,9 @@ export default function Home() {
       <About />
       <VisionPurpose />
       <ObjectiveApproach />
-      <Process />
+     
       <Cornerstones />
+      <Process />
       <GuidingPrinciple />
       <Founder />
       <Footer />

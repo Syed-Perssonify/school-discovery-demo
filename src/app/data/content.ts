@@ -12,14 +12,14 @@ export const navContent = {
   export const heroContent = {
     heading: "Transforming schools through evidence-based insights",
     subheading:
-      "School Discovery – Education & Technology Solutions partners with schools to understand current systems, identify strengths, and co-create a clear roadmap for better learner outcomes and a stronger school experience.",
+      "School Discovery partners with schools to understand current systems, identify strengths, and co-create a clear roadmap for better learner outcomes and a stronger school experience.",
     primaryCta: "Book a Discovery Visit",
   };
   
   export const aboutContent = {
     heading: "School Discovery – About",
     description:
-      "School Discovery – Education & Technology Solutions partners with schools to understand their current reality, identify systemic strengths, and design targeted pathways for improvement. Through a structured, evidence-based process, we help schools enhance learner outcomes and enrich the learning experience for students, teachers, parents, and leaders.",
+      "School Discovery partners with schools to understand their current strengths, identify systemic challenges, and design targeted pathways for improvement. Through a structured, evidence-based process, we help schools enhance learner outcomes and enrich the learning experience for students, teachers, parents, and leaders.",
   };
   
   export const visionPurposeContent = {
@@ -30,7 +30,7 @@ export const navContent = {
     },
     purpose: {
       label: "Purpose",
-      text: "School Discovery helps schools see where they stand today, clarify what is working well, and decide what needs to be strengthened or redesigned. The outcome is a clear, actionable roadmap for improvement that aligns with the school's context, values, and aspirations.",
+      text: "School Discovery helps schools see where they stand today, clarify what is working well, and explore and suggest what needs to be strengthened or redesigned. The outcome is a clear, actionable roadmap for improvement that aligns with the school's context, values, and aspirations.",
     },
   };
   
@@ -42,7 +42,7 @@ export const navContent = {
     },
     approach: {
       label: "Approach",
-      text: "During the visit, we combine direct observation, stakeholder engagement, and evidence review to gain a holistic understanding of the school. After the visit, our team at School Discovery – Education & Technology Solutions triangulates findings, applies professional judgement, and provides a current-status rating along with practical recommendations for the next phase of development.",
+      text: "During the visit, we combine direct observation, stakeholder engagement, and evidence review to gain a holistic understanding of the school. After the visit, our team at School Discovery triangulates findings, applies professional judgement, and provides a current-status rating along with practical recommendations for the next phase of development.",
     },
   };
   
@@ -114,17 +114,17 @@ export const navContent = {
     ],
     guidingPrinciple: {
       label: "Our Guiding Principle",
-      text: "Across all aspects of the visit—classroom observations, learning walks, focus group interactions, and document review—our approach remains non\u2011intrusive and system\u2011focused. At School Discovery – Education & Technology Solutions, we seek to understand how the school operates as a whole, not to evaluate individual performance, so that the school can build on its strengths with confidence and clarity.",
+      text: "Across all aspects of the visit—classroom observations, learning walks, focus group interactions, and document review—our approach remains non\u2011intrusive and system\u2011focused. At School Discovery, we seek to understand how the school operates as a whole, not to evaluate individual performance, so that the school can build on its strengths with confidence and clarity.",
     },
   };
   
   export const founderContent = {
     heading: "About the Founder",
     name: "Mr. Subramanyam Kantheti",
-    title: "Founder, School Discovery – Education & Technology Solutions",
+    title: "Founder, School Discovery",
     bio: [
-      "With over two decades of experience in the Indian K–12 education sector, Mr. Subramanyam Kantheti has served in leadership roles across school management, curriculum implementation, and education technology. He has functioned as CEO, CXO, and strategic advisor, working with CBSE, Cambridge, and international-board schools, as well as technology-driven education providers.",
-      "Through School Discovery, he brings together his deep understanding of school operations, academic leadership, and technology integration to help schools reflect on their current reality and design sustainable strategies for improvement. His focus is on building systems that support better learning outcomes, effective teaching practices, and a positive experience for all stakeholders.",
+      "With over two decades of experience in the Indian K–12 education sector, Mr. Subramanyam Kantheti has served in leadership roles across school management, curriculum implementation, and education technology. He has functioned as CEO, CXO, and strategic advisor, working with CBSE, Cambridge, and International Baccalaureate [IB], as well as technology-driven education providers.",
+      "Through School Discovery, he brings together his deep understanding of school operations, academic leadership, and technology integration to help schools reflect on their current strengths, identify systemic , and design sustainable strategies for improvement. His focus is on building systems that support better learning outcomes, effective teaching practices, and a positive experience for all stakeholders.",
     ],
     photo: "/images/founder/subramanyam-kantheti.jpg",
   };
@@ -132,7 +132,7 @@ export const navContent = {
   export const footerContent = {
     logo: "School Discovery",
     tagline: "Education & Technology Solutions",
-    copyright: `© ${new Date().getFullYear()} School Discovery – Education & Technology Solutions. All rights reserved.`,
+    copyright: `© ${new Date().getFullYear()} School Discovery. All rights reserved.`,
     links: [
       { label: "About", href: "#about" },
       { label: "Cornerstones", href: "#cornerstones" },

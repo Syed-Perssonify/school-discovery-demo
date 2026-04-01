@@ -19,7 +19,7 @@ export default function Process() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
-            className="md:sticky md:top-24 md:self-start"
+            className="md:sticky md:top-32 md:self-start"
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0D0D0D] tracking-tight leading-tight">
               {processContent.heading}
