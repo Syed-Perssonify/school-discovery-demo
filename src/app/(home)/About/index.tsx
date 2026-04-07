@@ -30,12 +30,15 @@ export default function About() {
             >
               {aboutContent.heading}
             </motion.h2>
-            <motion.p
-              variants={fadeInLeft}
-              className="text-sm sm:text-base text-muted-foreground leading-relaxed"
-            >
-              {aboutContent.description}
-            </motion.p>
+            {aboutContent.description.split("\n\n").map((paragraph, i) => (
+              <motion.p
+                key={i}
+                variants={fadeInLeft}
+                className="text-sm sm:text-base text-muted-foreground leading-relaxed"
+              >
+                {paragraph}
+              </motion.p>
+            ))}
           </motion.div>
 
           {/* Right -- image */}

@@ -10,16 +10,16 @@ export const navContent = {
   };
   
   export const heroContent = {
-    heading: "Transforming schools through evidence-based insights",
+    heading: "Improving schools through evidence\u2011based insights",
     subheading:
-      "School Discovery partners with schools to understand current systems, identify strengths, and co-create a clear roadmap for better learner outcomes and a stronger school experience.",
+      "School Discovery partners with schools to understand current systems, identify strengths, and co\u2011create a clear roadmap for better learner outcomes and a stronger school experience.",
     primaryCta: "Book a Discovery Visit",
   };
   
   export const aboutContent = {
     heading: "School Discovery – About",
     description:
-      "School Discovery partners with schools to understand their current strengths, identify systemic challenges, and design targeted pathways for improvement. Through a structured, evidence-based process, we help schools enhance learner outcomes and enrich the learning experience for students, teachers, parents, and leaders.",
+      "We partner with schools to bring clarity, direction, and consistency to both academic & non-academic practices. We try to understand their current strengths and design targeted pathways for improvement.\n\nThrough a structured, evidence\u2011based process, we help schools enhance learner outcomes and enrich the learning experience for students, teachers, parents, and leaders.",
   };
   
   export const visionPurposeContent = {
