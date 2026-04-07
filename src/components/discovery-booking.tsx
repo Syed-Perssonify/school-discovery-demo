@@ -137,6 +137,69 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                     </p>
                     <form onSubmit={onSubmit} className="flex flex-col gap-4">
                       <div className="flex flex-col gap-1.5">
+                        <label htmlFor="booking-school" className="text-sm font-medium text-[#0D0D0D]">
+                          School Name <span className="text-[#C0170F]">*</span>
+                        </label>
+                        <input
+                          id="booking-school"
+                          name="schoolName"
+                          type="text"
+                          required
+                          autoComplete="organization"
+                          className={inputClass}
+                        />
+                      </div>
+                      <div className="flex flex-col gap-1.5">
+                        <label htmlFor="booking-location" className="text-sm font-medium text-[#0D0D0D]">
+                          Location <span className="text-[#C0170F]">*</span>
+                        </label>
+                        <select
+                          id="booking-location"
+                          name="location"
+                          required
+                          defaultValue=""
+                          className={inputClass}
+                        >
+                          <option value="" disabled>Select a state / UT</option>
+                          <option value="Andhra Pradesh">Andhra Pradesh</option>
+                          <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                          <option value="Assam">Assam</option>
+                          <option value="Bihar">Bihar</option>
+                          <option value="Chhattisgarh">Chhattisgarh</option>
+                          <option value="Goa">Goa</option>
+                          <option value="Gujarat">Gujarat</option>
+                          <option value="Haryana">Haryana</option>
+                          <option value="Himachal Pradesh">Himachal Pradesh</option>
+                          <option value="Jharkhand">Jharkhand</option>
+                          <option value="Karnataka">Karnataka</option>
+                          <option value="Kerala">Kerala</option>
+                          <option value="Madhya Pradesh">Madhya Pradesh</option>
+                          <option value="Maharashtra">Maharashtra</option>
+                          <option value="Manipur">Manipur</option>
+                          <option value="Meghalaya">Meghalaya</option>
+                          <option value="Mizoram">Mizoram</option>
+                          <option value="Nagaland">Nagaland</option>
+                          <option value="Odisha">Odisha</option>
+                          <option value="Punjab">Punjab</option>
+                          <option value="Rajasthan">Rajasthan</option>
+                          <option value="Sikkim">Sikkim</option>
+                          <option value="Tamil Nadu">Tamil Nadu</option>
+                          <option value="Telangana">Telangana</option>
+                          <option value="Tripura">Tripura</option>
+                          <option value="Uttar Pradesh">Uttar Pradesh</option>
+                          <option value="Uttarakhand">Uttarakhand</option>
+                          <option value="West Bengal">West Bengal</option>
+                          <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                          <option value="Chandigarh">Chandigarh</option>
+                          <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                          <option value="Delhi">Delhi</option>
+                          <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                          <option value="Ladakh">Ladakh</option>
+                          <option value="Lakshadweep">Lakshadweep</option>
+                          <option value="Puducherry">Puducherry</option>
+                        </select>
+                      </div>
+                      <div className="flex flex-col gap-1.5">
                         <label htmlFor="booking-name" className="text-sm font-medium text-[#0D0D0D]">
                           Name <span className="text-[#C0170F]">*</span>
                         </label>
@@ -172,45 +235,6 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                           type="tel"
                           required
                           autoComplete="tel"
-                          className={inputClass}
-                        />
-                      </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label htmlFor="booking-school" className="text-sm font-medium text-[#0D0D0D]">
-                          School Name <span className="text-[#C0170F]">*</span>
-                        </label>
-                        <input
-                          id="booking-school"
-                          name="schoolName"
-                          type="text"
-                          required
-                          autoComplete="organization"
-                          className={inputClass}
-                        />
-                      </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label htmlFor="booking-curriculum" className="text-sm font-medium text-[#0D0D0D]">
-                          School Curriculum <span className="text-[#C0170F]">*</span>
-                        </label>
-                        <input
-                          id="booking-curriculum"
-                          name="curriculum"
-                          type="text"
-                          required
-                          placeholder="E.g. CBSE, ICSE, Cambridge, IB"
-                          className={inputClass}
-                        />
-                      </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label htmlFor="booking-location" className="text-sm font-medium text-[#0D0D0D]">
-                          Location <span className="text-[#C0170F]">*</span>
-                        </label>
-                        <input
-                          id="booking-location"
-                          name="location"
-                          type="text"
-                          required
-                          autoComplete="address-level2"
                           className={inputClass}
                         />
                       </div>
