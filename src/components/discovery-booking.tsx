@@ -30,6 +30,7 @@ export function useDiscoveryBooking() {
 export function DiscoveryBookingProvider({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
   const titleId = useId();
   const descId = useId();
 
@@ -72,10 +73,22 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
     }
   }, []);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
-    e.currentTarget.reset();
+    setSending(true);
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form));
+    try {
+      await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      setSubmitted(true);
+      form.reset();
+    } finally {
+      setSending(false);
+    }
   }
 
   const inputClass =
@@ -240,9 +253,10 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                       </div>
                       <button
                         type="submit"
-                        className="mt-2 w-full rounded-lg bg-[#C0170F] py-3 text-sm font-semibold text-white transition-colors hover:bg-[#9B100A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0170F] focus-visible:ring-offset-2"
+                        disabled={sending}
+                        className="mt-2 w-full rounded-lg bg-[#C0170F] py-3 text-sm font-semibold text-white transition-colors hover:bg-[#9B100A] disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0170F] focus-visible:ring-offset-2"
                       >
-                        Submit
+                        {sending ? "Sending…" : "Submit"}
                       </button>
                     </form>
                   </>
