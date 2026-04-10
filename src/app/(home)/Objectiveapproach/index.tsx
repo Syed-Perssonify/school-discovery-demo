@@ -3,6 +3,7 @@
 import { objectiveApproachContent } from "@/app/data/content";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { motion } from "motion/react";
+import Image from "next/image";
 
 export default function ObjectiveApproach() {
   return (
@@ -23,7 +24,7 @@ export default function ObjectiveApproach() {
             </h2>
           </motion.div>
 
-          {/* Right -- cards */}
+          {/* Right -- cards + image */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -53,6 +54,19 @@ export default function ObjectiveApproach() {
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 {objectiveApproachContent.approach.text}
               </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp}
+              className="relative aspect-video overflow-hidden"
+            >
+              <Image
+                src="/Operations 5.png"
+                alt="Integrated Management Framework"
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 66vw"
+              />
             </motion.div>
           </motion.div>
 

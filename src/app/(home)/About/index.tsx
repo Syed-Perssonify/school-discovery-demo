@@ -47,7 +47,7 @@ export default function About() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
-            className="relative aspect-4/3 rounded-2xl overflow-hidden"
+            className="relative aspect-4/3 overflow-hidden"
           >
             <Image
               src="/about.avif"

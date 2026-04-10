@@ -128,7 +128,7 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                 <button
                   type="button"
                   onClick={closeBooking}
-                  className="rounded-md p-2 text-[#0D0D0D] hover:bg-[#fafafa] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0170F]"
+                  className="cursor-pointer rounded-md p-2 text-[#0D0D0D] hover:bg-[#fafafa] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0170F]"
                   aria-label="Close"
                 >
                   <span aria-hidden className="block text-2xl leading-none">
@@ -254,7 +254,7 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                       <button
                         type="submit"
                         disabled={sending}
-                        className="mt-2 w-full rounded-lg bg-[#C0170F] py-3 text-sm font-semibold text-white transition-colors hover:bg-[#9B100A] disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0170F] focus-visible:ring-offset-2"
+                        className="cursor-pointer mt-2 w-full rounded-lg bg-[#C0170F] py-3 text-sm font-semibold text-white transition-colors hover:bg-[#9B100A] disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0170F] focus-visible:ring-offset-2"
                       >
                         {sending ? "Sending…" : "Submit"}
                       </button>

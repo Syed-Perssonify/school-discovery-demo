@@ -76,7 +76,7 @@ export default function Cornerstones() {
           </motion.div>
 
           {/* Image that changes based on active accordion item */}
-          <div className="relative aspect-4/3 rounded-2xl overflow-hidden bg-white border border-border">
+          <div className="relative aspect-4/3 overflow-hidden">
             <AnimatePresence mode="wait">
               {activeItem && (
                 <motion.div
@@ -91,7 +91,7 @@ export default function Cornerstones() {
                     src={activeItem.image}
                     alt={activeItem.title}
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </motion.div>
