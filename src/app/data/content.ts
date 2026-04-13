@@ -124,7 +124,7 @@ export const navContent = {
     title: "Founder, School Discovery",
     bio: [
       "With over two decades of experience in the Indian K–12 education sector, Mr. Subramanyam Kantheti has served in leadership roles across school management, curriculum implementation, and education technology. He has functioned as CEO, CXO, and strategic advisor, working with CBSE, Cambridge, and International Baccalaureate [IB], as well as technology-driven education providers.",
-      "Through School Discovery, he brings together his deep understanding of school operations, academic leadership, and technology integration to help schools reflect on their current strengths, identify systemic , and design sustainable strategies for improvement. His focus is on building systems that support better learning outcomes, effective teaching practices, and a positive experience for all stakeholders.",
+      "Through School Discovery, he brings together his deep understanding of school operations, academic leadership, and technology integration to help schools reflect on their current strengths and design sustainable strategies for improvement. His focus is on building systems that support better learning outcomes, effective teaching practices, and a positive experience for all stakeholders.",
     ],
     photo: "/images/founder/subramanyam-kantheti.jpg",
   };
