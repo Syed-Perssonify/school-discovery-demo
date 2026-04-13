@@ -38,7 +38,7 @@ export default function Founder() {
             <motion.p
               key={index}
               variants={fadeUp}
-              className="text-sm sm:text-base text-muted-foreground leading-relaxed"
+              className="text-sm sm:text-base text-muted-foreground leading-relaxed text-justify"
             >
               {paragraph}
             </motion.p>

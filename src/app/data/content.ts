@@ -17,7 +17,7 @@ export const navContent = {
   };
   
   export const aboutContent = {
-    heading: "School Discovery – About",
+    heading: "About School Discovery",
     description:
       "We partner with schools to bring clarity, direction, and consistency to both academic & non-academic practices. We try to understand their current strengths and design targeted pathways for improvement.\n\nThrough a structured, evidence\u2011based process, we help schools enhance learner outcomes and enrich the learning experience for students, teachers, parents, and leaders.",
   };

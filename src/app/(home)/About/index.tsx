@@ -50,8 +50,8 @@ export default function About() {
             className="relative aspect-4/3 overflow-hidden"
           >
             <Image
-              src="/about.avif"
-              alt="School Discovery – About"
+              src="/Classroom discussion over educational materials.png"
+              alt="About School Discovery"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
