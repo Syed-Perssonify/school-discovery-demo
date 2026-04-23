@@ -6,14 +6,14 @@ export const navContent = {
       { label: "Cornerstones", href: "#cornerstones" },
       { label: "Founder", href: "#founder" },
     ],
-    cta: "Book a Discovery Visit",
+    cta: "Click to Discover",
   };
   
   export const heroContent = {
     heading: "Improving schools through evidence\u2011based insights",
     subheading:
       "School Discovery partners with schools to understand current systems, identify strengths, and co\u2011create a clear roadmap for better learner outcomes and a stronger school experience.",
-    primaryCta: "Book a Discovery Visit",
+    primaryCta: "Click to Discover",
   };
   
   export const aboutContent = {

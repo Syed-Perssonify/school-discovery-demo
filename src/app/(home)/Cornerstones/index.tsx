@@ -1,117 +1,97 @@
 "use client";
 
 import { cornerstonesContent } from "@/app/data/content";
-import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
-import { AnimatePresence, motion } from "motion/react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { fadeUp, viewportOnce } from "@/lib/motion";
+import { motion } from "motion/react";
 import Image from "next/image";
-import { useState } from "react";
 
 export default function Cornerstones() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const activeItem = openIndex !== null ? cornerstonesContent.items[openIndex] : null;
-
   return (
-    <section id="cornerstones" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 bg-[#fafafa]">
-      <div className="max-w-6xl mx-auto">
-
-        {/* Centered heading + description */}
+    <section
+      id="cornerstones"
+      className="w-full bg-background py-8 sm:py-10 md:py-14"
+    >
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
-          variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="text-center max-w-2xl mx-auto mb-10 md:mb-14"
+          variants={fadeUp}
+          className="mx-auto mb-8 flex max-w-210 flex-col items-center justify-between gap-4 md:mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0D0D0D] tracking-tight mb-3 sm:mb-4">
-            {cornerstonesContent.heading}
+          <h2 className="text-center text-3xl tracking-tight text-balance text-foreground md:text-4xl lg:text-5xl">
+            Four Cornerstones of
+            <br />
+            <span className="text-primary">School Discovery</span>
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed whitespace-pre-line">
+          <p className="text-center text-sm leading-relaxed text-muted-foreground whitespace-pre-line md:text-base">
             {cornerstonesContent.description}
           </p>
         </motion.div>
 
-        {/* Two-column: accordion left, image right */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
-
-          {/* Accordion */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            className="flex flex-col divide-y divide-border"
+        <Tabs
+          defaultValue={cornerstonesContent.items[0].number}
+          className="flex flex-col-reverse gap-6 xl:flex-row! xl:items-stretch xl:gap-10"
+        >
+          <TabsList
+            variant="default"
+            className="h-fit! w-full flex-col gap-2 bg-transparent p-0 xl:w-auto xl:max-w-136.25 xl:flex-1"
           >
-            {cornerstonesContent.items.map((item, index) => (
-              <motion.div key={item.number} variants={fadeUp} className="py-4 sm:py-5">
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full flex items-center justify-between gap-4 text-left"
-                >
-                  <h3 className="text-sm sm:text-base font-bold text-[#0D0D0D]">
-                    {item.title}
-                  </h3>
-                  <span className="text-[#C0170F] text-xl font-bold shrink-0">
-                    {openIndex === index ? "−" : "+"}
+            {cornerstonesContent.items.map((item) => (
+              <TabsTrigger
+                key={item.number}
+                value={item.number}
+                className="group w-full cursor-pointer flex-col items-start gap-1.5 whitespace-normal rounded-[0.75rem] border border-transparent p-4 text-left transition-colors hover:bg-muted/60 data-active:bg-muted data-active:text-foreground"
+              >
+                <div className="flex items-baseline gap-3">
+                  <span className="text-xs font-semibold tracking-widest text-primary">
+                    {item.number}
                   </span>
-                </button>
-                <AnimatePresence initial={false}>
-                  {openIndex === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <p className="pt-3 sm:pt-4 text-sm text-muted-foreground leading-relaxed">
-                        {item.description}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                  <span className="text-base font-bold leading-snug text-foreground">
+                    {item.title}
+                  </span>
+                </div>
+                <p className="text-xs leading-relaxed text-muted-foreground md:text-sm">
+                  {item.description}
+                </p>
+              </TabsTrigger>
             ))}
-          </motion.div>
+          </TabsList>
 
-          {/* Image that changes based on active accordion item */}
-          <div className="relative aspect-4/3 overflow-hidden">
-            <AnimatePresence mode="wait">
-              {activeItem && (
-                <motion.div
-                  key={activeItem.number}
-                  initial={{ opacity: 0, scale: 0.97 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.97 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="absolute inset-0"
-                >
+          <div className="w-full xl:flex-1 xl:self-stretch">
+            {cornerstonesContent.items.map((item) => (
+              <TabsContent
+                key={item.number}
+                value={item.number}
+                className="w-full outline-none xl:h-full"
+              >
+                <div className="relative aspect-video w-full overflow-hidden rounded-[0.75rem] xl:aspect-auto xl:h-full">
                   <Image
-                    src={activeItem.image}
-                    alt={activeItem.title}
+                    src={item.image}
+                    alt={item.title}
                     fill
+                    sizes="(min-width: 1280px) 50vw, 100vw"
                     className="object-contain"
-                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
-                </motion.div>
-              )}
-            </AnimatePresence>
+                </div>
+              </TabsContent>
+            ))}
           </div>
+        </Tabs>
 
-        </div>
-
-        {/* Closing line */}
         <motion.p
-          variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="text-center text-sm sm:text-base text-muted-foreground leading-relaxed mt-10 md:mt-14 max-w-2xl mx-auto"
+          variants={fadeUp}
+          className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground md:mt-12 md:text-base"
         >
-          {cornerstonesContent.closing}
+          These four cornerstones guide our observations, interactions,
+          <br />
+          and recommendations throughout the{" "}
+          <span className="text-primary">School Discovery</span> process.
         </motion.p>
-
       </div>
     </section>
   );

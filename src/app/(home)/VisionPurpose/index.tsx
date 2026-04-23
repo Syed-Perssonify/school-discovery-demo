@@ -1,62 +1,119 @@
 "use client";
 
-import { visionPurposeContent } from "@/app/data/content";
-import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
-import { motion } from "motion/react";
+import { objectiveApproachContent, visionPurposeContent } from "@/app/data/content";
+import { fadeUp, viewportOnce } from "@/lib/motion";
+import { motion, type Variants } from "motion/react";
+import Image from "next/image";
+
+const cards = [
+  {
+    number: "01",
+    label: visionPurposeContent.vision.label,
+    text: visionPurposeContent.vision.text,
+    image:
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80",
+    alt: "Students collaborating in a bright classroom",
+  },
+  {
+    number: "02",
+    label: visionPurposeContent.purpose.label,
+    text: visionPurposeContent.purpose.text,
+    image:
+      "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1200&q=80",
+    alt: "A young learner engaged with a book",
+  },
+  {
+    number: "03",
+    label: objectiveApproachContent.objective.label,
+    text: objectiveApproachContent.objective.text,
+    image:
+      "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80",
+    alt: "Rows of books in a school library",
+  },
+  {
+    number: "04",
+    label: objectiveApproachContent.approach.label,
+    text: objectiveApproachContent.approach.text,
+    image:
+      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
+    alt: "Student taking notes at a desk",
+  },
+];
+
+const cardStagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.18, delayChildren: 0.1 } },
+};
+
+const cardSlideRight: Variants = {
+  hidden: { opacity: 0, x: 80 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
 
 export default function VisionPurpose() {
   return (
-    <section id="vision-purpose" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-14">
+    <section
+      id="vision-purpose"
+      className="w-full overflow-hidden bg-background py-8 sm:py-10 md:py-14"
+    >
+      <div className="container mx-auto px-4 sm:px-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={fadeUp}
+          className="w-full space-y-5 lg:w-3/5"
+        >
+          <h2 className="mb-6 w-full max-w-3xl text-left text-4xl font-semibold tracking-tight text-foreground md:text-5xl lg:text-6xl">
+            Shaping Schools That Keep Learning
+          </h2>
+          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground md:mb-16 lg:text-lg">
+            The principles and practices that guide every School Discovery
+            engagement — from the vision we hold for classrooms to the approach
+            we bring on the ground.
+          </p>
+        </motion.div>
 
-          {/* Left -- sticky title */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            className="md:sticky md:top-32 md:self-start"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0D0D0D] tracking-tight leading-tight">
-              {visionPurposeContent.heading}
-            </h2>
-          </motion.div>
-
-          {/* Right -- cards */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            className="flex flex-col gap-5 sm:gap-6"
-          >
-            <motion.div
-              variants={fadeUp}
-              className="border border-border rounded-xl p-5 sm:p-6 md:p-8 bg-[#fafafa] hover:shadow-md transition-shadow"
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={cardStagger}
+          className="mt-10 grid grid-cols-1 gap-6 md:mt-4 md:grid-cols-2 lg:grid-cols-4"
+        >
+          {cards.map((card) => (
+            <motion.article
+              key={card.number}
+              variants={cardSlideRight}
+              className="flex flex-col rounded-3xl bg-muted/60 p-4"
             >
-              <h3 className="text-sm sm:text-base font-bold text-[#C0170F] uppercase tracking-widest mb-3">
-                {visionPurposeContent.vision.label}
-              </h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                {visionPurposeContent.vision.text}
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeUp}
-              className="border border-border rounded-xl p-5 sm:p-6 md:p-8 bg-[#fafafa] hover:shadow-md transition-shadow"
-            >
-              <h3 className="text-sm sm:text-base font-bold text-[#C0170F] uppercase tracking-widest mb-3">
-                {visionPurposeContent.purpose.label}
-              </h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                {visionPurposeContent.purpose.text}
-              </p>
-            </motion.div>
-          </motion.div>
-
-        </div>
+              <div className="relative h-56 w-full overflow-hidden rounded-2xl">
+                <Image
+                  src={card.image}
+                  alt={card.alt}
+                  fill
+                  sizes="(min-width: 1024px) 22vw, (min-width: 768px) 45vw, 90vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="mt-4 w-full p-3">
+                <p className="text-sm leading-none tracking-tighter text-muted-foreground opacity-60">
+                  {card.number}
+                </p>
+                <h3 className="my-3 text-2xl font-semibold leading-tight tracking-tight text-foreground lg:text-3xl">
+                  {card.label}
+                </h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {card.text}
+                </p>
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

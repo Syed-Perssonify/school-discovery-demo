@@ -1,36 +1,93 @@
 "use client";
 
 import { processContent } from "@/app/data/content";
-import { fadeUp, viewportOnce } from "@/lib/motion";
+import { fadeInLeft, fadeInRight, staggerContainer, viewportOnce } from "@/lib/motion";
 import { motion } from "motion/react";
-import Image from "next/image";
 
 export default function GuidingPrinciple() {
   return (
-    <section id="guiding-principle" className="relative overflow-hidden">
-      <Image
-        src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1600&q=80"
-        alt=""
-        fill
-        className="object-cover"
-        sizes="100vw"
+    <section
+      id="guiding-principle"
+      className="relative overflow-hidden bg-background py-8 sm:py-10 md:py-14"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-linear-to-r from-transparent via-primary/40 to-transparent"
       />
-      <div className="absolute inset-0 bg-[#0D0D0D]/80" />
 
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={viewportOnce}
-        className="relative z-10 py-16 sm:py-24 md:py-32 px-4 sm:px-6 flex flex-col items-center text-center gap-5 sm:gap-6 max-w-3xl mx-auto"
-      >
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
-          {processContent.guidingPrinciple.label}
-        </h2>
-        <p className="text-sm sm:text-base md:text-lg text-white/85 leading-relaxed">
-          {processContent.guidingPrinciple.text}
-        </p>
-      </motion.div>
+      <div className="container mx-auto px-4 sm:px-6">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:items-center lg:gap-14"
+        >
+          <motion.div variants={fadeInLeft} className="lg:col-span-5">
+            <div className="flex items-center gap-3">
+              <span className="h-px w-10 bg-primary" />
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+                {processContent.guidingPrinciple.label}
+              </span>
+            </div>
+
+            <h2 className="mt-5 text-4xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              <span className="block whitespace-nowrap">Non-intrusive.</span>
+              <span className="block whitespace-nowrap text-primary">
+                System-focused.
+              </span>
+            </h2>
+
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
+              How we show up in every school we visit — and why.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeInRight}
+            className="relative lg:col-span-7 lg:pl-10"
+          >
+            <div
+              aria-hidden="true"
+              className="absolute left-0 top-0 hidden h-full w-px bg-border lg:block"
+            />
+
+            <p className="text-base leading-relaxed text-foreground sm:text-lg md:text-xl md:leading-[1.7]">
+              Across all aspects of the visit—classroom observations, learning
+              walks, focus group interactions, and document review—our approach
+              remains{" "}
+              <span className="font-semibold text-primary">
+                non-intrusive
+              </span>{" "}
+              and{" "}
+              <span className="font-semibold text-primary">
+                system-focused
+              </span>
+              . At School Discovery, we seek to understand how the school
+              operates{" "}
+              <span className="font-semibold text-foreground">as a whole</span>,
+              not to evaluate individual performance, so that the school can{" "}
+              <span className="font-semibold text-foreground">
+                build on its strengths
+              </span>{" "}
+              with confidence and clarity.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-2">
+              {["Classroom Observations", "Learning Walks", "Focus Groups", "Document Review"].map(
+                (tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex items-center rounded-full border border-border bg-muted/40 px-3 py-1 text-xs font-medium text-muted-foreground"
+                  >
+                    {tag}
+                  </span>
+                ),
+              )}
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }

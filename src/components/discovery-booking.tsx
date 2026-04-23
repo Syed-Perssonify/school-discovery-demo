@@ -92,7 +92,7 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
   }
 
   const inputClass =
-    "w-full rounded-lg border border-border bg-white px-3 py-2.5 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-[#C0170F]/40";
+    "w-full rounded-lg border border-border bg-white px-3 py-2.5 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-primary/40";
 
   return (
     <BookingContext.Provider value={{ openBooking, closeBooking }}>
@@ -123,12 +123,12 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
             >
               <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-border bg-white px-5 py-4 sm:px-6">
                 <h2 id={titleId} className="text-lg font-extrabold text-[#0D0D0D]">
-                  Book a Discovery Visit
+                  Click to Discover
                 </h2>
                 <button
                   type="button"
                   onClick={closeBooking}
-                  className="cursor-pointer rounded-md p-2 text-[#0D0D0D] hover:bg-[#fafafa] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0170F]"
+                  className="cursor-pointer rounded-md p-2 text-[#0D0D0D] hover:bg-[#fafafa] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   aria-label="Close"
                 >
                   <span aria-hidden className="block text-2xl leading-none">
@@ -151,7 +151,7 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                     <form onSubmit={onSubmit} className="flex flex-col gap-4">
                       <div className="flex flex-col gap-1.5">
                         <label htmlFor="booking-school" className="text-sm font-medium text-[#0D0D0D]">
-                          School Name <span className="text-[#C0170F]">*</span>
+                          School Name <span className="text-primary">*</span>
                         </label>
                         <input
                           id="booking-school"
@@ -164,7 +164,7 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                       </div>
                       <div className="flex flex-col gap-1.5">
                         <label htmlFor="booking-location" className="text-sm font-medium text-[#0D0D0D]">
-                          Location <span className="text-[#C0170F]">*</span>
+                          Location <span className="text-primary">*</span>
                         </label>
                         <select
                           id="booking-location"
@@ -214,7 +214,7 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                       </div>
                       <div className="flex flex-col gap-1.5">
                         <label htmlFor="booking-name" className="text-sm font-medium text-[#0D0D0D]">
-                          Name <span className="text-[#C0170F]">*</span>
+                          Name <span className="text-primary">*</span>
                         </label>
                         <input
                           id="booking-name"
@@ -227,7 +227,7 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                       </div>
                       <div className="flex flex-col gap-1.5">
                         <label htmlFor="booking-email" className="text-sm font-medium text-[#0D0D0D]">
-                          Email <span className="text-[#C0170F]">*</span>
+                          Email <span className="text-primary">*</span>
                         </label>
                         <input
                           id="booking-email"
@@ -240,7 +240,7 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                       </div>
                       <div className="flex flex-col gap-1.5">
                         <label htmlFor="booking-phone" className="text-sm font-medium text-[#0D0D0D]">
-                          Phone Number <span className="text-[#C0170F]">*</span>
+                          Phone Number <span className="text-primary">*</span>
                         </label>
                         <input
                           id="booking-phone"
@@ -254,7 +254,7 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                       <button
                         type="submit"
                         disabled={sending}
-                        className="cursor-pointer mt-2 w-full rounded-lg bg-[#C0170F] py-3 text-sm font-semibold text-white transition-colors hover:bg-[#9B100A] disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0170F] focus-visible:ring-offset-2"
+                        className="cursor-pointer mt-2 w-full rounded-lg bg-primary py-3 text-sm font-semibold text-white transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                       >
                         {sending ? "Sending…" : "Submit"}
                       </button>

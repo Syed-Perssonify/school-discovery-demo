@@ -2,7 +2,6 @@ import Hero from "./(home)/Hero";
 import Navbar from "./(home)/Navbar";
 import About from "./(home)/About";
 import VisionPurpose from "./(home)/VisionPurpose";
-import ObjectiveApproach from "./(home)/Objectiveapproach";
 import Process from "./(home)/Process";
 import Cornerstones from "./(home)/Cornerstones";
 import GuidingPrinciple from "./(home)/Guidingprinciple";
@@ -17,8 +16,6 @@ export default function Home() {
       <Hero />
       <About />
       <VisionPurpose />
-      <ObjectiveApproach />
-     
       <Cornerstones />
       <Process />
       <GuidingPrinciple />
