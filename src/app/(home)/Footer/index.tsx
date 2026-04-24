@@ -52,12 +52,21 @@ export default function Footer() {
             ))}
           </motion.ul>
 
-          <motion.p
+          <motion.div
             variants={fadeUp}
-            className="text-xs text-foreground/70 md:text-sm"
+            className="flex flex-col items-center gap-1 text-xs text-foreground/70 sm:flex-row sm:gap-4 md:text-sm"
           >
-            {footerContent.address}
-          </motion.p>
+            <span>{footerContent.address}</span>
+            <span aria-hidden="true" className="hidden sm:inline">
+              •
+            </span>
+            <a
+              href={`mailto:${footerContent.email}`}
+              className="transition-opacity hover:opacity-75"
+            >
+              {footerContent.email}
+            </a>
+          </motion.div>
 
           <motion.p
             variants={fadeUp}

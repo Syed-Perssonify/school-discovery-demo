@@ -196,6 +196,7 @@ export const navContent = {
     logo: "School Discovery",
     tagline: "Education & Technology Solutions",
     address: "Narsingi, Hyderabad",
+    email: "subbu.k@schooldiscovery.in",
     copyright: `© ${new Date().getFullYear()} School Discovery. All rights reserved.`,
     links: [
       { label: "About", href: "#about" },
