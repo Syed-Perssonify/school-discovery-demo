@@ -120,7 +120,8 @@ export const navContent = {
         iconKey: "graduation-cap",
         title: "Continuous Professional Development (CPD)",
         description:
-          "We design and deliver structured CPD programmes for Teachers and Coordinators, focused on strengthening classroom practice, pedagogical thinking, and academic leadership — grounded in the realities of the Indian school context.",
+          "We design and deliver structured CPD programmes for Teachers and Coordinators, focused on strengthening classroom practice, pedagogical thinking, and academic leadership.",
+        footnote: "Grounded in the realities of the Indian school context.",
         groups: [],
       },
       {
@@ -135,11 +136,9 @@ export const navContent = {
             items: [
               {
                 label: "Cambridge International Certificate / Diploma in Teaching & Learning",
-                href: "https://www.cambridgeinternational.org/support-and-training-for-schools/professional-development/professional-development-qualifications/",
               },
               {
                 label: "Cambridge International Certificate / Diploma in Educational Leadership",
-                href: "https://www.cambridgeinternational.org/support-and-training-for-schools/professional-development/professional-development-qualifications/",
               },
             ],
           },
@@ -196,6 +195,7 @@ export const navContent = {
   export const footerContent = {
     logo: "School Discovery",
     tagline: "Education & Technology Solutions",
+    address: "Narsingi, Hyderabad",
     copyright: `© ${new Date().getFullYear()} School Discovery. All rights reserved.`,
     links: [
       { label: "About", href: "#about" },

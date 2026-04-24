@@ -56,6 +56,13 @@ export default function Footer() {
             variants={fadeUp}
             className="text-xs text-foreground/70 md:text-sm"
           >
+            {footerContent.address}
+          </motion.p>
+
+          <motion.p
+            variants={fadeUp}
+            className="text-xs text-foreground/70 md:text-sm"
+          >
             {footerContent.copyright}
           </motion.p>
         </nav>

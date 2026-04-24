@@ -1,12 +1,15 @@
 "use client";
 
 import { cornerstonesContent } from "@/app/data/content";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { fadeUp, viewportOnce } from "@/lib/motion";
-import { motion } from "motion/react";
+import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
+import { PlusIcon } from "@phosphor-icons/react/dist/ssr";
+import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Cornerstones() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
     <section
       id="cornerstones"
@@ -30,63 +33,116 @@ export default function Cornerstones() {
           </p>
         </motion.div>
 
-        <Tabs
-          defaultValue={cornerstonesContent.items[0].number}
-          className="flex flex-col-reverse gap-6 xl:flex-row! xl:items-stretch xl:gap-10"
-        >
-          <TabsList
-            variant="default"
-            className="h-fit! w-full flex-col gap-2 bg-transparent p-0 xl:w-auto xl:max-w-136.25 xl:flex-1"
-          >
-            {cornerstonesContent.items.map((item) => (
-              <TabsTrigger
-                key={item.number}
-                value={item.number}
-                className="group w-full cursor-pointer flex-col items-start gap-1.5 whitespace-normal rounded-[0.75rem] border border-transparent p-4 text-left transition-colors hover:bg-muted/60 data-active:bg-muted data-active:text-foreground"
-              >
-                <div className="flex items-baseline gap-3">
+        <div className="flex flex-col divide-y divide-border border-y border-border md:hidden">
+          {cornerstonesContent.items.map((item, index) => {
+            const isOpen = openIndex === index;
+            const panelId = `cornerstone-panel-${index}`;
+            const triggerId = `cornerstone-trigger-${index}`;
+
+            return (
+              <div key={item.number}>
+                <button
+                  type="button"
+                  id={triggerId}
+                  aria-controls={panelId}
+                  aria-expanded={isOpen}
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="flex w-full cursor-pointer items-center justify-between gap-4 py-4 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
                   <span className="text-base font-bold leading-snug text-foreground">
                     {item.title}
                   </span>
-                </div>
-                <p className="text-xs leading-relaxed text-muted-foreground md:text-sm">
+                  <span
+                    aria-hidden="true"
+                    className="flex size-8 shrink-0 items-center justify-center rounded-full border border-border text-foreground"
+                  >
+                    <PlusIcon
+                      weight="bold"
+                      className={`size-4 transition-transform duration-300 ${
+                        isOpen ? "rotate-45" : "rotate-0"
+                      }`}
+                    />
+                  </span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      id={panelId}
+                      role="region"
+                      aria-labelledby={triggerId}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="flex flex-col gap-4 pb-5">
+                        <p className="text-sm leading-relaxed text-muted-foreground">
+                          {item.description}
+                        </p>
+                        <div className="relative aspect-video w-full overflow-hidden bg-muted">
+                          <Image
+                            src={item.image}
+                            alt={item.title}
+                            fill
+                            sizes="100vw"
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={staggerContainer}
+          className="hidden items-stretch gap-6 md:grid md:grid-cols-2 xl:grid-cols-4"
+        >
+          {cornerstonesContent.items.map((item) => (
+            <motion.article
+              key={item.number}
+              variants={fadeUp}
+              className="ring-foreground/10 bg-card text-card-foreground flex h-full flex-col overflow-hidden shadow-xs ring-1"
+            >
+              <div className="relative aspect-video w-full overflow-hidden bg-muted">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  sizes="(min-width: 1280px) 25vw, 50vw"
+                  className="object-contain"
+                />
+              </div>
+              <div className="flex flex-1 flex-col gap-2 p-6">
+                <h3 className="text-base font-bold leading-snug text-foreground lg:text-lg">
+                  {item.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   {item.description}
                 </p>
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-          <div className="w-full xl:flex-1 xl:self-stretch">
-            {cornerstonesContent.items.map((item) => (
-              <TabsContent
-                key={item.number}
-                value={item.number}
-                className="w-full outline-none xl:h-full"
-              >
-                <div className="relative aspect-video w-full overflow-hidden rounded-[0.75rem] xl:aspect-auto xl:h-full">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    sizes="(min-width: 1280px) 50vw, 100vw"
-                    className="object-contain"
-                  />
-                </div>
-              </TabsContent>
-            ))}
-          </div>
-        </Tabs>
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
 
         <motion.p
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
           variants={fadeUp}
-          className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground md:mt-12 md:text-base"
+          className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-balance text-muted-foreground md:mt-12 md:text-base"
         >
           These four cornerstones guide our observations, interactions,
-          <br />
-          and recommendations throughout the{" "}
+          <br className="hidden md:inline" />
+          {" "}and recommendations throughout the{" "}
           <span className="text-primary">School Discovery</span> process.
         </motion.p>
       </div>

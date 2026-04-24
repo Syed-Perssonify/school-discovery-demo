@@ -4,7 +4,6 @@ import { supportContent } from "@/app/data/content";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import {
   ArrowUpRightIcon,
-  CaretRightIcon,
   CertificateIcon,
   GraduationCapIcon,
   MedalIcon,
@@ -20,37 +19,15 @@ const pillarIcons: Record<string, Icon> = {
   medal: MedalIcon,
 };
 
-function ReadMoreLink() {
-  return (
-    <a
-      href="#contact"
-      className="border-border bg-background text-foreground hover:bg-muted hover:text-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 inline-flex h-9 shrink-0 items-center justify-center gap-1.5 rounded-md border px-2.5 text-sm font-medium shadow-xs transition-all outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
-    >
-      Read more
-      <CaretRightIcon
-        weight="bold"
-        aria-hidden="true"
-        className="ml-2 size-4"
-      />
-    </a>
-  );
-}
-
-function PillarCard({
-  pillar,
-  variant = "default",
-}: {
-  pillar: Pillar;
-  variant?: "default" | "wide";
-}) {
+function PillarCard({ pillar }: { pillar: Pillar }) {
   const PillarIcon = pillarIcons[pillar.iconKey];
-  const isWide = variant === "wide";
   const hasGroups = pillar.groups.length > 0;
+  const footnote = "footnote" in pillar ? pillar.footnote : undefined;
 
   return (
     <motion.article
       variants={fadeUp}
-      className="group/card ring-foreground/10 bg-card text-card-foreground flex h-full flex-col justify-between gap-5 overflow-hidden rounded-xl py-6 text-sm shadow-xs ring-1"
+      className="group/card ring-foreground/10 bg-card text-card-foreground flex h-full flex-col gap-5 overflow-hidden rounded-xl py-6 text-sm shadow-xs ring-1"
     >
       <div className="flex items-center gap-4 px-6">
         {PillarIcon ? (
@@ -72,88 +49,81 @@ function PillarCard({
           {pillar.description}
         </p>
 
-        {hasGroups ? (
-          <div
-            className={
-              isWide
-                ? "mt-2 flex flex-col gap-4 border-t border-border pt-4 md:flex-row md:items-end md:justify-between"
-                : "mt-2 flex flex-col gap-3 border-t border-border pt-4"
-            }
-          >
-            <div className="flex flex-1 flex-col gap-3">
-              {pillar.groups.map((group, groupIndex) => {
-                const isStacked = group.items.some(
-                  (item) => item.label.length > 40,
-                );
+        {footnote ? (
+          <div className="mt-auto border-t border-border pt-4">
+            <p className="text-sm font-medium italic leading-relaxed text-primary">
+              {footnote}
+            </p>
+          </div>
+        ) : null}
 
-                return (
-                  <div
-                    key={group.label || `group-${groupIndex}`}
-                    className="flex flex-col gap-2"
+        {hasGroups ? (
+          <div className="mt-2 flex flex-col gap-3 border-t border-border pt-4">
+            {pillar.groups.map((group, groupIndex) => {
+              const isStacked = group.items.some(
+                (item) => item.label.length > 40,
+              );
+
+              return (
+                <div
+                  key={group.label || `group-${groupIndex}`}
+                  className="flex flex-col gap-2"
+                >
+                  {group.label ? (
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+                      {group.label}
+                    </span>
+                  ) : null}
+                  <ul
+                    className={
+                      isStacked
+                        ? "flex flex-col gap-2"
+                        : "flex flex-wrap gap-2"
+                    }
                   >
-                    {group.label ? (
-                      <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
-                        {group.label}
-                      </span>
-                    ) : null}
-                    <ul
-                      className={
-                        isStacked
-                          ? "flex flex-col gap-2"
-                          : "flex flex-wrap gap-2"
-                      }
-                    >
-                      {group.items.map((item) => (
-                        <li
-                          key={item.label}
-                          className={isStacked ? "w-full" : ""}
-                        >
-                          {"href" in item ? (
-                            <a
-                              href={item.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className={
-                                isStacked
-                                  ? "border-border bg-background text-foreground hover:border-primary hover:bg-primary hover:text-white flex w-full items-center justify-between gap-3 rounded-md border px-3 py-2 text-xs font-medium transition-colors"
-                                  : "border-border bg-background text-foreground hover:border-primary hover:bg-primary hover:text-white inline-flex items-center gap-1.5 rounded-md border px-3 py-1 text-xs font-medium transition-colors"
-                              }
-                            >
-                              <span className="flex-1">{item.label}</span>
-                              <ArrowUpRightIcon
-                                weight="bold"
-                                aria-hidden="true"
-                                className="size-3 shrink-0"
-                              />
-                            </a>
-                          ) : (
-                            <span
-                              className={
-                                isStacked
-                                  ? "border-border bg-background text-foreground flex w-full items-center rounded-md border px-3 py-2 text-xs font-medium"
-                                  : "border-border bg-background text-foreground inline-flex items-center rounded-md border px-3 py-1 text-xs font-medium"
-                              }
-                            >
-                              {item.label}
-                            </span>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
-            {isWide ? <ReadMoreLink /> : null}
+                    {group.items.map((item) => (
+                      <li
+                        key={item.label}
+                        className={isStacked ? "w-full" : ""}
+                      >
+                        {"href" in item ? (
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={
+                              isStacked
+                                ? "border-border bg-background text-foreground hover:border-primary hover:bg-primary hover:text-white flex w-full items-center justify-between gap-3 rounded-md border px-3 py-2 text-xs font-medium transition-colors"
+                                : "border-border bg-background text-foreground hover:border-primary hover:bg-primary hover:text-white inline-flex items-center gap-1.5 rounded-md border px-3 py-1 text-xs font-medium transition-colors"
+                            }
+                          >
+                            <span className="flex-1">{item.label}</span>
+                            <ArrowUpRightIcon
+                              weight="bold"
+                              aria-hidden="true"
+                              className="size-3 shrink-0"
+                            />
+                          </a>
+                        ) : (
+                          <span
+                            className={
+                              isStacked
+                                ? "border-border bg-background text-foreground flex w-full items-center rounded-md border px-3 py-2 text-xs font-medium"
+                                : "border-border bg-background text-foreground inline-flex items-center rounded-md border px-3 py-1 text-xs font-medium"
+                            }
+                          >
+                            {item.label}
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
         ) : null}
       </div>
-
-      {!isWide ? (
-        <div className="flex items-center px-6">
-          <ReadMoreLink />
-        </div>
-      ) : null}
     </motion.article>
   );
 }

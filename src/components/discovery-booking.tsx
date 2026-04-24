@@ -11,6 +11,111 @@ import {
   type ReactNode,
 } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+const INDIAN_CITIES = [
+  "Agra",
+  "Ahmedabad",
+  "Ajmer",
+  "Aligarh",
+  "Allahabad (Prayagraj)",
+  "Amravati",
+  "Amritsar",
+  "Asansol",
+  "Aurangabad",
+  "Bangalore (Bengaluru)",
+  "Bareilly",
+  "Belgaum",
+  "Bhavnagar",
+  "Bhilai",
+  "Bhiwandi",
+  "Bhopal",
+  "Bhubaneswar",
+  "Bikaner",
+  "Chandigarh",
+  "Chennai",
+  "Coimbatore",
+  "Cuttack",
+  "Dehradun",
+  "Delhi",
+  "Dhanbad",
+  "Durgapur",
+  "Erode",
+  "Faridabad",
+  "Firozabad",
+  "Ghaziabad",
+  "Gorakhpur",
+  "Guntur",
+  "Gurgaon (Gurugram)",
+  "Guwahati",
+  "Gwalior",
+  "Howrah",
+  "Hubli-Dharwad",
+  "Hyderabad",
+  "Indore",
+  "Jabalpur",
+  "Jaipur",
+  "Jalandhar",
+  "Jammu",
+  "Jamnagar",
+  "Jamshedpur",
+  "Jhansi",
+  "Jodhpur",
+  "Kalyan-Dombivli",
+  "Kanpur",
+  "Kochi",
+  "Kolhapur",
+  "Kolkata",
+  "Kota",
+  "Lucknow",
+  "Ludhiana",
+  "Madurai",
+  "Mangalore",
+  "Meerut",
+  "Moradabad",
+  "Mumbai",
+  "Mysore (Mysuru)",
+  "Nagpur",
+  "Nanded",
+  "Nashik",
+  "Navi Mumbai",
+  "Nellore",
+  "Noida",
+  "Patna",
+  "Puducherry",
+  "Pune",
+  "Raipur",
+  "Rajkot",
+  "Ranchi",
+  "Rourkela",
+  "Saharanpur",
+  "Salem",
+  "Sangli-Miraj & Kupwad",
+  "Siliguri",
+  "Solapur",
+  "Srinagar",
+  "Surat",
+  "Thane",
+  "Thiruvananthapuram",
+  "Tiruchirappalli",
+  "Tirunelveli",
+  "Tiruppur",
+  "Udaipur",
+  "Ujjain",
+  "Vadodara",
+  "Varanasi",
+  "Vasai-Virar",
+  "Vijayawada",
+  "Visakhapatnam",
+  "Warangal",
+  "Other",
+];
 
 type BookingContextValue = {
   openBooking: () => void;
@@ -92,7 +197,7 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
   }
 
   const inputClass =
-    "w-full rounded-lg border border-border bg-white px-3 py-2.5 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-primary/40";
+    "w-full rounded-lg border border-white/15 bg-[#161616] px-3 py-2.5 text-sm text-white outline-none focus-visible:ring-2 focus-visible:ring-primary/40";
 
   return (
     <BookingContext.Provider value={{ openBooking, closeBooking }}>
@@ -114,21 +219,21 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
               aria-modal="true"
               aria-labelledby={titleId}
               aria-describedby={descId}
-              className="relative max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-t-2xl bg-white shadow-xl sm:max-w-md sm:rounded-2xl"
+              className="relative max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-t-2xl bg-[#0D0D0D] text-white shadow-xl sm:max-w-md sm:rounded-2xl"
               initial={{ y: 48, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 48, opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-border bg-white px-5 py-4 sm:px-6">
-                <h2 id={titleId} className="text-lg font-extrabold text-[#0D0D0D]">
+              <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-white/10 bg-[#0D0D0D] px-5 py-4 sm:px-6">
+                <h2 id={titleId} className="text-lg font-extrabold text-white">
                   Click to Discover
                 </h2>
                 <button
                   type="button"
                   onClick={closeBooking}
-                  className="cursor-pointer rounded-md p-2 text-[#0D0D0D] hover:bg-[#fafafa] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="cursor-pointer rounded-md p-2 text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   aria-label="Close"
                 >
                   <span aria-hidden className="block text-2xl leading-none">
@@ -139,18 +244,20 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
 
               <div className="px-5 py-5 sm:px-6 sm:py-6">
                 {submitted ? (
-                  <p id={descId} className="text-sm text-muted-foreground leading-relaxed">
+                  <p id={descId} className="text-sm leading-relaxed text-white/70">
                     Thank you — we have received your request. Our team will be in touch with you
                     soon.
                   </p>
                 ) : (
                   <>
-                    <p id={descId} className="mb-5 text-sm text-muted-foreground leading-relaxed">
-                      Please share your details below. All fields are required.
+                    <p id={descId} className="mb-5 text-sm leading-relaxed text-white/70">
+                      Please share your details below.
+                      <br />
+                      The concerned person will contact you shortly.
                     </p>
                     <form onSubmit={onSubmit} className="flex flex-col gap-4">
                       <div className="flex flex-col gap-1.5">
-                        <label htmlFor="booking-school" className="text-sm font-medium text-[#0D0D0D]">
+                        <label htmlFor="booking-school" className="text-sm font-medium text-white">
                           School Name <span className="text-primary">*</span>
                         </label>
                         <input
@@ -163,57 +270,24 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                         />
                       </div>
                       <div className="flex flex-col gap-1.5">
-                        <label htmlFor="booking-location" className="text-sm font-medium text-[#0D0D0D]">
+                        <label htmlFor="booking-location" className="text-sm font-medium text-white">
                           Location <span className="text-primary">*</span>
                         </label>
-                        <select
-                          id="booking-location"
-                          name="location"
-                          required
-                          defaultValue=""
-                          className={inputClass}
-                        >
-                          <option value="" disabled>Select a state / UT</option>
-                          <option value="Andhra Pradesh">Andhra Pradesh</option>
-                          <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                          <option value="Assam">Assam</option>
-                          <option value="Bihar">Bihar</option>
-                          <option value="Chhattisgarh">Chhattisgarh</option>
-                          <option value="Goa">Goa</option>
-                          <option value="Gujarat">Gujarat</option>
-                          <option value="Haryana">Haryana</option>
-                          <option value="Himachal Pradesh">Himachal Pradesh</option>
-                          <option value="Jharkhand">Jharkhand</option>
-                          <option value="Karnataka">Karnataka</option>
-                          <option value="Kerala">Kerala</option>
-                          <option value="Madhya Pradesh">Madhya Pradesh</option>
-                          <option value="Maharashtra">Maharashtra</option>
-                          <option value="Manipur">Manipur</option>
-                          <option value="Meghalaya">Meghalaya</option>
-                          <option value="Mizoram">Mizoram</option>
-                          <option value="Nagaland">Nagaland</option>
-                          <option value="Odisha">Odisha</option>
-                          <option value="Punjab">Punjab</option>
-                          <option value="Rajasthan">Rajasthan</option>
-                          <option value="Sikkim">Sikkim</option>
-                          <option value="Tamil Nadu">Tamil Nadu</option>
-                          <option value="Telangana">Telangana</option>
-                          <option value="Tripura">Tripura</option>
-                          <option value="Uttar Pradesh">Uttar Pradesh</option>
-                          <option value="Uttarakhand">Uttarakhand</option>
-                          <option value="West Bengal">West Bengal</option>
-                          <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                          <option value="Chandigarh">Chandigarh</option>
-                          <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
-                          <option value="Delhi">Delhi</option>
-                          <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                          <option value="Ladakh">Ladakh</option>
-                          <option value="Lakshadweep">Lakshadweep</option>
-                          <option value="Puducherry">Puducherry</option>
-                        </select>
+                        <Select name="location" required>
+                          <SelectTrigger id="booking-location">
+                            <SelectValue placeholder="Select a city" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {INDIAN_CITIES.map((city) => (
+                              <SelectItem key={city} value={city}>
+                                {city}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
                       </div>
                       <div className="flex flex-col gap-1.5">
-                        <label htmlFor="booking-name" className="text-sm font-medium text-[#0D0D0D]">
+                        <label htmlFor="booking-name" className="text-sm font-medium text-white">
                           Name <span className="text-primary">*</span>
                         </label>
                         <input
@@ -226,7 +300,7 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                         />
                       </div>
                       <div className="flex flex-col gap-1.5">
-                        <label htmlFor="booking-email" className="text-sm font-medium text-[#0D0D0D]">
+                        <label htmlFor="booking-email" className="text-sm font-medium text-white">
                           Email <span className="text-primary">*</span>
                         </label>
                         <input
@@ -239,7 +313,7 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                         />
                       </div>
                       <div className="flex flex-col gap-1.5">
-                        <label htmlFor="booking-phone" className="text-sm font-medium text-[#0D0D0D]">
+                        <label htmlFor="booking-phone" className="text-sm font-medium text-white">
                           Phone Number <span className="text-primary">*</span>
                         </label>
                         <input
