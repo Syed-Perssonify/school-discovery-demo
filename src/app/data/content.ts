@@ -103,11 +103,20 @@ export const navContent = {
         groups: [
           {
             label: "National Boards",
-            items: ["CBSE", "ICSE / ISC"],
+            items: [{ label: "CBSE" }, { label: "ICSE / ISC" }],
           },
           {
             label: "International Boards",
-            items: ["Cambridge International", "International Baccalaureate (IB)"],
+            items: [
+              {
+                label: "Cambridge International",
+                href: "https://www.cambridgeinternational.org/Images/163193-becoming-a-cambridge-school-registration-process.pdf",
+              },
+              {
+                label: "International Baccalaureate (IB)",
+                href: "https://www.ibo.org/become-an-ib-school/",
+              },
+            ],
           },
         ],
       },
@@ -129,8 +138,14 @@ export const navContent = {
           {
             label: "",
             items: [
-              "Cambridge International Certificate / Diploma in Teaching & Learning",
-              "Cambridge International Certificate / Diploma in Educational Leadership",
+              {
+                label: "Cambridge International Certificate / Diploma in Teaching & Learning",
+                href: "https://www.cambridgeinternational.org/support-and-training-for-schools/professional-development/professional-development-qualifications/",
+              },
+              {
+                label: "Cambridge International Certificate / Diploma in Educational Leadership",
+                href: "https://www.cambridgeinternational.org/support-and-training-for-schools/professional-development/professional-development-qualifications/",
+              },
             ],
           },
         ],

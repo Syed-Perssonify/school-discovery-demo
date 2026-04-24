@@ -3,6 +3,7 @@
 import { supportContent } from "@/app/data/content";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import {
+  ArrowUpRightIcon,
   CaretRightIcon,
   CertificateIcon,
   GraduationCapIcon,
@@ -93,11 +94,26 @@ function PillarCard({
                   ) : null}
                   <ul className="flex flex-wrap gap-2">
                     {group.items.map((item) => (
-                      <li
-                        key={item}
-                        className="border-border bg-background text-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium"
-                      >
-                        {item}
+                      <li key={item.label}>
+                        {"href" in item ? (
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="border-border bg-background text-foreground hover:border-primary hover:bg-primary hover:text-white inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors"
+                          >
+                            {item.label}
+                            <ArrowUpRightIcon
+                              weight="bold"
+                              aria-hidden="true"
+                              className="size-3"
+                            />
+                          </a>
+                        ) : (
+                          <span className="border-border bg-background text-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
+                            {item.label}
+                          </span>
+                        )}
                       </li>
                     ))}
                   </ul>
