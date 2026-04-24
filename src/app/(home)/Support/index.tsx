@@ -81,43 +81,68 @@ function PillarCard({
             }
           >
             <div className="flex flex-1 flex-col gap-3">
-              {pillar.groups.map((group, groupIndex) => (
-                <div
-                  key={group.label || `group-${groupIndex}`}
-                  className="flex flex-col gap-2"
-                >
-                  {group.label ? (
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
-                      {group.label}
-                    </span>
-                  ) : null}
-                  <ul className="flex flex-wrap gap-2">
-                    {group.items.map((item) => (
-                      <li key={item.label}>
-                        {"href" in item ? (
-                          <a
-                            href={item.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="border-border bg-background text-foreground hover:border-primary hover:bg-primary hover:text-white inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors"
-                          >
-                            {item.label}
-                            <ArrowUpRightIcon
-                              weight="bold"
-                              aria-hidden="true"
-                              className="size-3"
-                            />
-                          </a>
-                        ) : (
-                          <span className="border-border bg-background text-foreground inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
-                            {item.label}
-                          </span>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+              {pillar.groups.map((group, groupIndex) => {
+                const isStacked = group.items.some(
+                  (item) => item.label.length > 40,
+                );
+
+                return (
+                  <div
+                    key={group.label || `group-${groupIndex}`}
+                    className="flex flex-col gap-2"
+                  >
+                    {group.label ? (
+                      <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+                        {group.label}
+                      </span>
+                    ) : null}
+                    <ul
+                      className={
+                        isStacked
+                          ? "flex flex-col gap-2"
+                          : "flex flex-wrap gap-2"
+                      }
+                    >
+                      {group.items.map((item) => (
+                        <li
+                          key={item.label}
+                          className={isStacked ? "w-full" : ""}
+                        >
+                          {"href" in item ? (
+                            <a
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={
+                                isStacked
+                                  ? "border-border bg-background text-foreground hover:border-primary hover:bg-primary hover:text-white flex w-full items-center justify-between gap-3 rounded-md border px-3 py-2 text-xs font-medium transition-colors"
+                                  : "border-border bg-background text-foreground hover:border-primary hover:bg-primary hover:text-white inline-flex items-center gap-1.5 rounded-md border px-3 py-1 text-xs font-medium transition-colors"
+                              }
+                            >
+                              <span className="flex-1">{item.label}</span>
+                              <ArrowUpRightIcon
+                                weight="bold"
+                                aria-hidden="true"
+                                className="size-3 shrink-0"
+                              />
+                            </a>
+                          ) : (
+                            <span
+                              className={
+                                isStacked
+                                  ? "border-border bg-background text-foreground flex w-full items-center rounded-md border px-3 py-2 text-xs font-medium"
+                                  : "border-border bg-background text-foreground inline-flex items-center rounded-md border px-3 py-1 text-xs font-medium"
+                              }
+                            >
+                              {item.label}
+                            </span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
             </div>
             {isWide ? <ReadMoreLink /> : null}
           </div>
@@ -134,8 +159,6 @@ function PillarCard({
 }
 
 export default function Support() {
-  const [first, second, third] = supportContent.pillars;
-
   return (
     <section
       id="support"
@@ -164,9 +187,9 @@ export default function Support() {
           variants={staggerContainer}
           className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-3"
         >
-          <PillarCard pillar={first} />
-          <PillarCard pillar={second} />
-          <PillarCard pillar={third} />
+          {supportContent.pillars.map((pillar) => (
+            <PillarCard key={pillar.number} pillar={pillar} />
+          ))}
         </motion.div>
       </div>
     </section>
