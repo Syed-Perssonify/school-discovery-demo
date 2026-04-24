@@ -84,6 +84,60 @@ export const navContent = {
     ],
   };
   
+  export const supportContent = {
+    heading: "How We Support Schools",
+    description:
+      "Beyond discovery and improvement, School Discovery offers targeted\nsupport across key areas of school development.",
+    feature: {
+      image:
+        "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
+      alt: "Educator reviewing notes at a desk",
+    },
+    pillars: [
+      {
+        number: "01",
+        iconKey: "certificate",
+        title: "Board Affiliation Support",
+        description:
+          "We guide schools through the affiliation process for leading national and international boards. Whether you are pursuing affiliation for the first time or transitioning between boards, we help navigate the process with clarity and confidence.",
+        groups: [
+          {
+            label: "National Boards",
+            items: ["CBSE", "ICSE / ISC"],
+          },
+          {
+            label: "International Boards",
+            items: ["Cambridge International", "International Baccalaureate (IB)"],
+          },
+        ],
+      },
+      {
+        number: "02",
+        iconKey: "graduation-cap",
+        title: "Continuous Professional Development (CPD)",
+        description:
+          "We design and deliver structured CPD programmes for Teachers and Coordinators, focused on strengthening classroom practice, pedagogical thinking, and academic leadership — grounded in the realities of the Indian school context.",
+        groups: [],
+      },
+      {
+        number: "03",
+        iconKey: "medal",
+        title: "Cambridge Professional Development Qualifications",
+        description:
+          "We support educators in pursuing internationally recognised Cambridge qualifications. These qualifications are ideal for schools looking to build a culture of reflective practice and invest in the long-term professional growth of their staff.",
+        groups: [
+          {
+            label: "",
+            items: [
+              "Cambridge International Certificate / Diploma in Teaching & Learning",
+              "Cambridge International Certificate / Diploma in Educational Leadership",
+            ],
+          },
+        ],
+      },
+    ],
+  };
+
   export const processContent = {
     heading: "What Happens During the Visit?",
     steps: [
