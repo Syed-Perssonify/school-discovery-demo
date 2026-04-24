@@ -11,7 +11,6 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import type { Icon } from "@phosphor-icons/react";
 import { motion } from "motion/react";
-import Image from "next/image";
 
 type Pillar = (typeof supportContent.pillars)[number];
 
@@ -163,32 +162,11 @@ export default function Support() {
           whileInView="visible"
           viewport={viewportOnce}
           variants={staggerContainer}
-          className="flex flex-col gap-6"
+          className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-3"
         >
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-stretch">
-            <div className="lg:w-1/3">
-              <PillarCard pillar={first} />
-            </div>
-            <motion.div
-              variants={fadeUp}
-              className="relative aspect-video w-full overflow-hidden rounded-xl lg:aspect-auto lg:w-1/3"
-            >
-              <Image
-                src={supportContent.feature.image}
-                alt={supportContent.feature.alt}
-                fill
-                sizes="(min-width: 1024px) 33vw, 100vw"
-                className="object-cover"
-              />
-            </motion.div>
-            <div className="lg:w-1/3">
-              <PillarCard pillar={second} />
-            </div>
-          </div>
-
-          <div className="w-full">
-            <PillarCard pillar={third} variant="wide" />
-          </div>
+          <PillarCard pillar={first} />
+          <PillarCard pillar={second} />
+          <PillarCard pillar={third} />
         </motion.div>
       </div>
     </section>

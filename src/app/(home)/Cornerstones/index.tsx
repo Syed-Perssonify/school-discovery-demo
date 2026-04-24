@@ -45,9 +45,6 @@ export default function Cornerstones() {
                 className="group w-full cursor-pointer flex-col items-start gap-1.5 whitespace-normal rounded-[0.75rem] border border-transparent p-4 text-left transition-colors hover:bg-muted/60 data-active:bg-muted data-active:text-foreground"
               >
                 <div className="flex items-baseline gap-3">
-                  <span className="text-xs font-semibold tracking-widest text-primary">
-                    {item.number}
-                  </span>
                   <span className="text-base font-bold leading-snug text-foreground">
                     {item.title}
                   </span>

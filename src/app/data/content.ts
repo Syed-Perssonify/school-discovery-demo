@@ -88,11 +88,6 @@ export const navContent = {
     heading: "How We Support Schools",
     description:
       "Beyond discovery and improvement, School Discovery offers targeted\nsupport across key areas of school development.",
-    feature: {
-      image:
-        "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
-      alt: "Educator reviewing notes at a desk",
-    },
     pillars: [
       {
         number: "01",

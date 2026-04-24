@@ -18,9 +18,9 @@ export default function Home() {
       <About />
       <VisionPurpose />
       <Cornerstones />
-      <Support />
       <Process />
       <GuidingPrinciple />
+      <Support />
       <Founder />
       <Footer />
     </div>

@@ -101,10 +101,7 @@ export default function VisionPurpose() {
                 />
               </div>
               <div className="mt-4 w-full p-3">
-                <p className="text-sm leading-none tracking-tighter text-muted-foreground opacity-60">
-                  {card.number}
-                </p>
-                <h3 className="my-3 text-2xl font-semibold leading-tight tracking-tight text-foreground lg:text-3xl">
+                <h3 className="mb-3 text-2xl font-semibold leading-tight tracking-tight text-foreground lg:text-3xl">
                   {card.label}
                 </h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
