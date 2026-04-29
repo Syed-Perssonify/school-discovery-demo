@@ -11,6 +11,7 @@ import {
   type ReactNode,
 } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { EnvelopeSimpleIcon, MapPinIcon, XIcon } from "@phosphor-icons/react/dist/ssr";
 import {
   Select,
   SelectContent,
@@ -197,7 +198,8 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
   }
 
   const inputClass =
-    "w-full rounded-lg border border-white/15 bg-[#161616] px-3 py-2.5 text-sm text-white outline-none focus-visible:ring-2 focus-visible:ring-primary/40";
+    "w-full rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none focus-visible:ring-2 focus-visible:ring-primary/40";
+  const labelClass = "text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500";
 
   return (
     <BookingContext.Provider value={{ openBooking, closeBooking }}>
@@ -219,46 +221,76 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
               aria-modal="true"
               aria-labelledby={titleId}
               aria-describedby={descId}
-              className="relative max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-t-2xl bg-[#0D0D0D] text-white shadow-xl sm:max-w-md sm:rounded-2xl"
+              className="relative max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-t-2xl bg-white text-zinc-900 shadow-xl sm:max-w-md sm:rounded-2xl"
               initial={{ y: 48, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 48, opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-white/10 bg-[#0D0D0D] px-5 py-4 sm:px-6">
-                <h2 id={titleId} className="text-lg font-extrabold text-white">
-                  Click to Discover
-                </h2>
-                <button
-                  type="button"
-                  onClick={closeBooking}
-                  className="cursor-pointer rounded-md p-2 text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                  aria-label="Close"
-                >
-                  <span aria-hidden className="block text-2xl leading-none">
-                    ×
-                  </span>
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={closeBooking}
+                className="absolute right-4 top-4 z-10 cursor-pointer rounded-md p-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                aria-label="Close"
+              >
+                <XIcon weight="bold" aria-hidden="true" className="size-5" />
+              </button>
 
-              <div className="px-5 py-5 sm:px-6 sm:py-6">
+              <div className="px-6 py-7 sm:px-8 sm:py-8">
                 {submitted ? (
-                  <p id={descId} className="text-sm leading-relaxed text-white/70">
-                    Thank you — we have received your request. Our team will be in touch with you
-                    soon.
-                  </p>
+                  <>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                      Contact
+                    </p>
+                    <h2 id={titleId} className="mt-3 text-3xl font-extrabold text-zinc-900 sm:text-4xl">
+                      Thank you.
+                    </h2>
+                    <span aria-hidden className="mt-3 block h-0.75 w-12 rounded-full bg-primary" />
+                    <p id={descId} className="mt-5 text-sm leading-relaxed text-zinc-600">
+                      We have received your request. Our team will be in touch with you soon.
+                    </p>
+                  </>
                 ) : (
                   <>
-                    <p id={descId} className="mb-5 text-sm leading-relaxed text-white/70">
-                      Please share your details below.
-                      <br />
-                      The concerned person will contact you shortly.
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                      Contact
                     </p>
-                    <form onSubmit={onSubmit} className="flex flex-col gap-4">
-                      <div className="flex flex-col gap-1.5">
-                        <label htmlFor="booking-school" className="text-sm font-medium text-white">
-                          School Name <span className="text-primary">*</span>
+                    <h2 id={titleId} className="mt-3 text-3xl font-extrabold text-zinc-900 sm:text-4xl">
+                      Let&apos;s connect.
+                    </h2>
+                    <span aria-hidden className="mt-3 block h-0.75 w-12 rounded-full bg-primary" />
+                    <p id={descId} className="mt-5 text-sm leading-relaxed text-zinc-600">
+                      Ready to bring School Discovery to your campus? Reach out and we will
+                      connect with you soon.
+                    </p>
+
+                    <div className="mt-5 flex flex-col gap-3 text-sm text-zinc-700">
+                      <a
+                        href="mailto:subbu.k@schooldiscovery.in"
+                        className="flex items-center gap-3 hover:text-zinc-900"
+                      >
+                        <EnvelopeSimpleIcon
+                          weight="regular"
+                          aria-hidden="true"
+                          className="size-5 shrink-0 text-primary"
+                        />
+                        <span>subbu.k@schooldiscovery.in</span>
+                      </a>
+                      <p className="flex items-center gap-3">
+                        <MapPinIcon
+                          weight="regular"
+                          aria-hidden="true"
+                          className="size-5 shrink-0 text-primary"
+                        />
+                        <span>Narsingi, Hyderabad</span>
+                      </p>
+                    </div>
+
+                    <form onSubmit={onSubmit} className="mt-7 flex flex-col gap-5">
+                      <div className="flex flex-col gap-2">
+                        <label htmlFor="booking-school" className={labelClass}>
+                          School Name
                         </label>
                         <input
                           id="booking-school"
@@ -266,29 +298,37 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                           type="text"
                           required
                           autoComplete="organization"
+                          placeholder="Your school name"
                           className={inputClass}
                         />
                       </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label htmlFor="booking-location" className="text-sm font-medium text-white">
-                          Location <span className="text-primary">*</span>
+                      <div className="flex flex-col gap-2">
+                        <label htmlFor="booking-location" className={labelClass}>
+                          Location
                         </label>
                         <Select name="location" required>
-                          <SelectTrigger id="booking-location">
+                          <SelectTrigger
+                            id="booking-location"
+                            className="border-zinc-200 bg-zinc-50 px-4 py-3 text-zinc-900 data-placeholder:text-zinc-400 [&_svg]:text-zinc-500"
+                          >
                             <SelectValue placeholder="Select a city" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="border-zinc-200 bg-white text-zinc-900">
                             {INDIAN_CITIES.map((city) => (
-                              <SelectItem key={city} value={city}>
+                              <SelectItem
+                                key={city}
+                                value={city}
+                                className="text-zinc-900 data-highlighted:bg-zinc-100"
+                              >
                                 {city}
                               </SelectItem>
                             ))}
                           </SelectContent>
                         </Select>
                       </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label htmlFor="booking-name" className="text-sm font-medium text-white">
-                          Name <span className="text-primary">*</span>
+                      <div className="flex flex-col gap-2">
+                        <label htmlFor="booking-name" className={labelClass}>
+                          Name
                         </label>
                         <input
                           id="booking-name"
@@ -296,12 +336,13 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                           type="text"
                           required
                           autoComplete="name"
+                          placeholder="Your full name"
                           className={inputClass}
                         />
                       </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label htmlFor="booking-email" className="text-sm font-medium text-white">
-                          Email <span className="text-primary">*</span>
+                      <div className="flex flex-col gap-2">
+                        <label htmlFor="booking-email" className={labelClass}>
+                          Email
                         </label>
                         <input
                           id="booking-email"
@@ -309,12 +350,13 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                           type="email"
                           required
                           autoComplete="email"
+                          placeholder="you@school.edu"
                           className={inputClass}
                         />
                       </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label htmlFor="booking-phone" className="text-sm font-medium text-white">
-                          Phone Number <span className="text-primary">*</span>
+                      <div className="flex flex-col gap-2">
+                        <label htmlFor="booking-phone" className={labelClass}>
+                          Phone Number
                         </label>
                         <input
                           id="booking-phone"
@@ -322,15 +364,16 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                           type="tel"
                           required
                           autoComplete="tel"
+                          placeholder="Your phone number"
                           className={inputClass}
                         />
                       </div>
                       <button
                         type="submit"
                         disabled={sending}
-                        className="cursor-pointer mt-2 w-full rounded-lg bg-primary py-3 text-sm font-semibold text-white transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                        className="mt-2 w-full cursor-pointer rounded-lg bg-primary py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                       >
-                        {sending ? "Sending…" : "Submit"}
+                        {sending ? "Sending…" : "Send Message"}
                       </button>
                     </form>
                   </>
