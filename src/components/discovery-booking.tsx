@@ -153,11 +153,14 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     }
     return () => {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [open]);
 
@@ -209,6 +212,7 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
           <motion.div
             key="discovery-booking"
             role="presentation"
+            data-lenis-prevent
             className="fixed inset-0 z-200 flex items-end justify-center bg-black/60 sm:items-center sm:p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -221,6 +225,7 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
               aria-modal="true"
               aria-labelledby={titleId}
               aria-describedby={descId}
+              data-lenis-prevent
               className="relative max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-t-2xl bg-white text-zinc-900 shadow-xl sm:max-w-md sm:rounded-2xl"
               initial={{ y: 48, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -306,19 +311,26 @@ export function DiscoveryBookingProvider({ children }: { children: ReactNode }) 
                         <label htmlFor="booking-location" className={labelClass}>
                           Location
                         </label>
-                        <Select name="location" required>
+                        <Select name="location" required modal={false}>
                           <SelectTrigger
                             id="booking-location"
-                            className="border-zinc-200 bg-zinc-50 px-4 py-3 text-zinc-900 data-placeholder:text-zinc-400 [&_svg]:text-zinc-500"
+                            className="h-auto w-full rounded-lg border-zinc-200 bg-zinc-50 px-4 py-3 text-sm text-zinc-900 data-placeholder:text-zinc-400 [&_svg]:text-zinc-500"
                           >
                             <SelectValue placeholder="Select a city" />
                           </SelectTrigger>
-                          <SelectContent className="border-zinc-200 bg-white text-zinc-900">
+                          <SelectContent
+                            side="bottom"
+                            align="start"
+                            sideOffset={6}
+                            alignItemWithTrigger={false}
+                            data-lenis-prevent
+                            className="max-h-72 rounded-lg border border-zinc-200 bg-white text-zinc-900 shadow-lg ring-0"
+                          >
                             {INDIAN_CITIES.map((city) => (
                               <SelectItem
                                 key={city}
                                 value={city}
-                                className="text-zinc-900 data-highlighted:bg-zinc-100"
+                                className="cursor-pointer rounded-md px-3 py-2 text-sm text-zinc-900 focus:bg-zinc-100 focus:text-zinc-900"
                               >
                                 {city}
                               </SelectItem>

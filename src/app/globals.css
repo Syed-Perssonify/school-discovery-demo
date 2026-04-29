@@ -85,7 +85,6 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
-    zoom: 0.8;
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
