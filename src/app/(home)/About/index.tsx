@@ -18,6 +18,9 @@ type ParallaxImageProps = {
   sizes: string;
   className?: string;
   strength?: number;
+  scale?: number;
+  objectPosition?: string;
+  objectFit?: "cover" | "contain";
 };
 
 function ParallaxImage({
@@ -26,6 +29,9 @@ function ParallaxImage({
   sizes,
   className = "",
   strength = 8,
+  scale = 1.2,
+  objectPosition,
+  objectFit = "cover",
 }: ParallaxImageProps) {
   const ref = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -44,13 +50,14 @@ function ParallaxImage({
       ref={ref}
       className={`relative w-full overflow-hidden rounded-lg ${className}`}
     >
-      <motion.div style={{ y, scale: 1.2 }} className="absolute inset-0">
+      <motion.div style={{ y, scale }} className="absolute inset-0">
         <Image
           src={src}
           alt={alt}
           fill
           sizes={sizes}
-          className="object-cover"
+          style={objectPosition ? { objectPosition } : undefined}
+          className={objectFit === "contain" ? "object-contain" : "object-cover"}
         />
       </motion.div>
     </div>
@@ -98,18 +105,20 @@ export default function About() {
               />
               <div className="hidden w-full flex-col items-stretch justify-center gap-6 md:flex md:w-1/2">
                 <ParallaxImage
-                  src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=2200&h=2000&q=85"
-                  alt="Child engaged in reading"
+                  src="/About School Discovery/1.jpeg"
+                  alt=""
                   sizes={columnSizes}
                   className="aspect-11/10"
-                  strength={7}
+                  strength={3}
+                  scale={1.05}
                 />
                 <ParallaxImage
-                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&h=2000&q=85"
-                  alt="Student writing notes at a desk"
+                  src="/About School Discovery/2.jpeg"
+                  alt=""
                   sizes={columnSizes}
                   className="aspect-7/10"
-                  strength={11}
+                  strength={5}
+                  scale={1.05}
                 />
               </div>
             </motion.div>
@@ -127,11 +136,12 @@ export default function About() {
               className="flex w-full flex-col items-stretch justify-center gap-6 md:flex-row"
             >
               <ParallaxImage
-                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1800&h=2000&q=85"
-                alt="Stack of books for learning"
+                src="/hero-banner.jpeg"
+                alt=""
                 sizes={columnSizes}
-                className="aspect-9/10 md:w-1/2"
-                strength={9}
+                className="aspect-video md:w-1/2"
+                strength={0}
+                scale={0.9}
               />
               <div className="hidden w-full flex-col items-stretch justify-center gap-6 md:flex md:w-1/2">
                 <ParallaxImage

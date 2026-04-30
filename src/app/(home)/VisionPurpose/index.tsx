@@ -18,9 +18,8 @@ const cards = [
     number: "02",
     label: visionPurposeContent.purpose.label,
     text: visionPurposeContent.purpose.text,
-    image:
-      "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1200&q=80",
-    alt: "A young learner engaged with a book",
+    image: "/Shaping Schools That Keep Learning/12.jpeg",
+    alt: "",
   },
   {
     number: "03",
@@ -34,9 +33,8 @@ const cards = [
     number: "04",
     label: objectiveApproachContent.approach.label,
     text: objectiveApproachContent.approach.text,
-    image:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
-    alt: "Student taking notes at a desk",
+    image: "/Shaping Schools That Keep Learning/11.jpeg",
+    alt: "",
   },
 ];
 
