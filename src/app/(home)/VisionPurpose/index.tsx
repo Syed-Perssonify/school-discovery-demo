@@ -10,9 +10,8 @@ const cards = [
     number: "01",
     label: visionPurposeContent.vision.label,
     text: visionPurposeContent.vision.text,
-    image:
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80",
-    alt: "Students collaborating in a bright classroom",
+    image: "/Shaping Schools That Keep Learning/Vision.jpeg",
+    alt: "",
   },
   {
     number: "02",
@@ -25,15 +24,14 @@ const cards = [
     number: "03",
     label: objectiveApproachContent.objective.label,
     text: objectiveApproachContent.objective.text,
-    image:
-      "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80",
-    alt: "Rows of books in a school library",
+    image: "/Shaping Schools That Keep Learning/Objective.jpeg",
+    alt: "",
   },
   {
     number: "04",
     label: objectiveApproachContent.approach.label,
     text: objectiveApproachContent.approach.text,
-    image: "/Shaping Schools That Keep Learning/11.jpeg",
+    image: "/Shaping Schools That Keep Learning/Approach.jpeg",
     alt: "",
   },
 ];

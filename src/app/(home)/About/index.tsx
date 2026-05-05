@@ -97,28 +97,23 @@ export default function About() {
               className="flex w-full flex-col items-stretch justify-center gap-6 md:flex-row"
             >
               <ParallaxImage
-                src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1400&h=2000&q=85"
-                alt="Students in a classroom"
+                src="/About School Discovery/1.png"
+                alt=""
                 sizes={columnSizes}
                 className="aspect-7/10 md:w-1/2"
-                strength={10}
               />
               <div className="hidden w-full flex-col items-stretch justify-center gap-6 md:flex md:w-1/2">
                 <ParallaxImage
-                  src="/About School Discovery/1.jpeg"
+                  src="/About School Discovery/2.png"
                   alt=""
                   sizes={columnSizes}
                   className="aspect-11/10"
-                  strength={3}
-                  scale={1.05}
                 />
                 <ParallaxImage
-                  src="/About School Discovery/2.jpeg"
+                  src="/About School Discovery/3.png"
                   alt=""
                   sizes={columnSizes}
                   className="aspect-7/10"
-                  strength={5}
-                  scale={1.05}
                 />
               </div>
             </motion.div>
@@ -140,23 +135,19 @@ export default function About() {
                 alt=""
                 sizes={columnSizes}
                 className="aspect-video md:w-1/2"
-                strength={0}
-                scale={0.9}
               />
               <div className="hidden w-full flex-col items-stretch justify-center gap-6 md:flex md:w-1/2">
                 <ParallaxImage
-                  src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1600&h=2000&q=85"
-                  alt="Library aisle lined with books"
+                  src="/About School Discovery/4.png"
+                  alt=""
                   sizes={columnSizes}
                   className="aspect-8/10"
-                  strength={8}
                 />
                 <ParallaxImage
-                  src="https://images.unsplash.com/photo-1509869175650-a1d97972541a?auto=format&fit=crop&w=1800&h=2000&q=85"
-                  alt="Open notebook and pen on a desk"
+                  src="/About School Discovery/5.png"
+                  alt=""
                   sizes={columnSizes}
                   className="aspect-9/10"
-                  strength={10}
                 />
               </div>
             </motion.div>
