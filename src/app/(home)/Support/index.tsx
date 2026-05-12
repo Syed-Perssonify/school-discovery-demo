@@ -10,6 +10,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import type { Icon } from "@phosphor-icons/react";
 import { motion } from "motion/react";
+import type { ReactNode } from "react";
 
 type Pillar = (typeof supportContent.pillars)[number];
 
@@ -19,10 +20,40 @@ const pillarIcons: Record<string, Icon> = {
   medal: MedalIcon,
 };
 
+function renderDescription(
+  description: string,
+  links?: ReadonlyArray<{ text: string; href: string }>,
+) {
+  if (!links || links.length === 0) return description;
+  const nodes: ReactNode[] = [];
+  let remaining = description;
+  links.forEach((link, i) => {
+    const idx = remaining.indexOf(link.text);
+    if (idx === -1) return;
+    if (idx > 0) nodes.push(remaining.slice(0, idx));
+    nodes.push(
+      <a
+        key={`${link.href}-${i}`}
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-primary underline underline-offset-2 hover:text-secondary"
+      >
+        {link.text}
+      </a>,
+    );
+    remaining = remaining.slice(idx + link.text.length);
+  });
+  if (remaining) nodes.push(remaining);
+  return nodes;
+}
+
 function PillarCard({ pillar }: { pillar: Pillar }) {
   const PillarIcon = pillarIcons[pillar.iconKey];
   const hasGroups = pillar.groups.length > 0;
   const footnote = "footnote" in pillar ? pillar.footnote : undefined;
+  const descriptionLinks =
+    "descriptionLinks" in pillar ? pillar.descriptionLinks : undefined;
 
   return (
     <motion.article
@@ -46,7 +77,7 @@ function PillarCard({ pillar }: { pillar: Pillar }) {
 
       <div className="flex flex-1 flex-col gap-4 px-6">
         <p className="text-sm leading-relaxed text-muted-foreground lg:text-base">
-          {pillar.description}
+          {renderDescription(pillar.description, descriptionLinks)}
         </p>
 
         {footnote ? (

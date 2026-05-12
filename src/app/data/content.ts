@@ -109,7 +109,7 @@ export const navContent = {
               },
               {
                 label: "International Baccalaureate (IB)",
-                href: "https://www.ibo.org/become-an-ib-school/",
+                href: "https://www.ibo.org/become-an-ib-school/#:~:text=How%20to%20start%20your%20journey,becoming%20an%20IB%20World%20School.",
               },
             ],
           },
@@ -130,6 +130,12 @@ export const navContent = {
         title: "Cambridge Professional Development Qualifications",
         description:
           "We support educators in pursuing internationally recognised Cambridge qualifications. These qualifications are ideal for schools looking to build a culture of reflective practice and invest in the long-term professional growth of their staff.",
+        descriptionLinks: [
+          {
+            text: "Cambridge qualifications",
+            href: "https://www.cambridgeinternational.org/support-and-training-for-schools/professional-development/professional-development-qualifications/",
+          },
+        ],
         groups: [
           {
             label: "",
